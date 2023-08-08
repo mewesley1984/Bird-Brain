@@ -33,6 +33,6 @@
 ## Questions/Comments
 
 ## Contributing
-This is a group project completed by Matt Wesley, Chris Messa, Michael Escribano, and Brian Wiley. 
+This is a group project completed by Matt Wesley, Chris Messa, Adorah Tho, Michael Escribano, and Brian Wiley. 
 
 If one would like to contribute to the repository as well feel free to email Matt Wesley at meugenewesley@gmail.com.  
