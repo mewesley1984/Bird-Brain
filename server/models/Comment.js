@@ -10,6 +10,11 @@ const commentSchema = new Schema({
         ref: 'Bird',
         required: true
     },
+    user: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User',
+        required: true
+    },
     datePosted: {
         type: Date,
         default: Date.now,
