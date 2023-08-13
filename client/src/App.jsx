@@ -1,6 +1,6 @@
 import './App.css'
-import Home from './components/Home'
-
+import Home from './components/home'
+import { Outlet } from 'react-router-dom';
 import { ApolloClient, createHttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
@@ -28,9 +28,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div>
+       <div>
+        <Home />
         <Outlet />
-      </div>
+       </div>
     </ApolloProvider>
   );
 }
