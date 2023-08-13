@@ -1,13 +1,25 @@
-const { User } = require("../models");
+const { User, Bird, Comment } = require("../models");
 const { signToken, AuthenticationError, verifyToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     user: async (root, args, context) => {
-      const token = verifyToken(context.req)
+      const token = verifyToken(context.req);
       if (!token) {
-        throw AuthenticationError
+        throw AuthenticationError;
       }
       return User.findOne({ email: token.data.email });
+    },
+    birds: async () => {
+      return Bird.find();
+    },
+    bird: async (_, { birdId }) => {
+      return Bird.findById(birdId);
+    },
+    comments: async () => {
+      return Comment.find();
+    },
+    comment: async (_, { commentId }) => {
+      return Comment.findById(commentId);
     },
   },
   Mutation: {
@@ -32,7 +44,26 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
-    }
+    },
+    addComment: async (_, { birdId, text }, context) => {
+      const token = verifyToken(context.req);
+      if (!token) {
+        throw AuthenticationError;
+      }
+
+      const user = await User.findOne({ email: token.data.email });
+
+      const comment = new Comment({
+        text,
+        bird: birdId,
+        user: user._id,
+        datePosted: new Date()
+      });
+      
+      await comment.save();
+      
+      return comment;
+    },
   },
 };
 
