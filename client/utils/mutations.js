@@ -24,3 +24,8 @@ export const SIGNUP_USER = gql`
     }
   }
 `;
+
+export const ADD_COMMENT = `gql
+  mutation addComment(
+    $
+  )`
