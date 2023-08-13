@@ -1,5 +1,5 @@
 import './App.css'
-import Home from './components/home'
+import Nav from './components/NavBar';
 import { Outlet } from 'react-router-dom';
 import { ApolloClient, createHttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -29,7 +29,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
        <div>
-        <Home />
+        <Nav />
         <Outlet />
        </div>
     </ApolloProvider>
