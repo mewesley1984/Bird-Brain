@@ -18,7 +18,7 @@
     "jwt-decode": "^3.1.2",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
-    "react-bootstrap": "^6.11.2"
+    "react-bootstrap": "^2.7.4"
 
   },
   "devDependencies": {
