@@ -5,9 +5,13 @@ export const LOGIN_USER = gql`
     login(email: $email, password: $password) {
     token
     user {
-        username
-        email
+      _id
+      username
+      email
     }
   }
  }
 `;
+
+export const SIGN_UP = gql`
+  mutation signUp($input: )`
