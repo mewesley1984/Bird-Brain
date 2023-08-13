@@ -1,5 +1,5 @@
 import './App.css'
-import Home from './components/Home'
+import Home from './components/home'
 
 import { ApolloClient, createHttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
