@@ -1,5 +1,5 @@
 import "./App.css";
-import Home from "./pages/HomePage";
+import Header from './components/Header/index'
 import { Outlet } from "react-router-dom";
 import {
   ApolloClient,
@@ -34,7 +34,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
-        <Home />
+        <Header />
+      </div>
+      <div>
         <Outlet />
       </div>
     </ApolloProvider>
