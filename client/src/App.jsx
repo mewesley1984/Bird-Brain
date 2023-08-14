@@ -7,8 +7,7 @@ import {
   ApolloProvider,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-<<<<<<< HEAD
-=======
+
 import Header from './components/Header/index'
 
 const httpLink = createHttpLink({
