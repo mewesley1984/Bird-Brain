@@ -1,41 +1,43 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function homePage() {
+import Auth from '../../utils/auth';
+
+const Header = () => {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+      <div className="container flex-row justify-space-between-lg justify-center align-center">
+        <div>
+          <Link className="text-light" to="/">
+            <h1 className="m-0">Bird Brain</h1>
+          </Link>
+          <p className="m-0">Bird Text</p>
+        </div>
+        <div>
+          {Auth.loggedIn() ? (
+            <>
+              <span>Hey there, {Auth.getProfile().data.username}!</span>
+              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link className="btn btn-lg btn-info m-2" to="/login">
+                Login
+              </Link>
+              <Link className="btn btn-lg btn-light m-2" to="/signup">
+                Signup
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
+    </header>
   );
-}
+};
 
-export default homePage;
+export default Header;
