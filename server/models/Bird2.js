@@ -14,6 +14,10 @@ const birdSchema = new Schema({
     type: String,
     required: true,
   },
+  birdAuthor: {
+    type: String, 
+    required: true,
+  }
   comments: [
     {
       commentText: {
