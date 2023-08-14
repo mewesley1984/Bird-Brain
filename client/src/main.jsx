@@ -1,15 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App.jsx'
-import Home from './components/HomePage.jsx'
-
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App.jsx";
+import Home from "./pages/HomePage.jsx";
+import Profile from "./pages/Profile.jsx/index.js";
+import BirdPost from "./pages/BirdPost.jsx";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
-    errorElement: <h1 className='display-2'>Wrong page!</h1>,
+    errorElement: <h1 className="display-2">Wrong page!</h1>,
     children: [
       
       {
@@ -17,19 +17,17 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/profile',
-        element: <profile />,
+        path: "/profile",
+        element: <Profile />,
       },
       {
-        path: '/bird',
-        element: <bird />,
+        path: "/birdPost/:",
+        element: <BirdPost />,
       },
     ],
   },
 ]);
 
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router = {router} />
-)
-
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
+);
