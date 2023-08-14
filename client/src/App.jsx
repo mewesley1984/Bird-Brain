@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from './components/Header/index'
+// import Header from './components/Header/index'
 import { Outlet } from "react-router-dom";
 import {
   ApolloClient,
@@ -33,9 +33,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div>
+      {/* <div>
         <Header />
-      </div>
+      </div> */}
       <div>
         <Outlet />
       </div>

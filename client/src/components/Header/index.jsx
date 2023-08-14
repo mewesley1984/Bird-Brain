@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link} from 'react-router-dom';
 
-function homePage() {
+function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
@@ -38,4 +38,4 @@ function homePage() {
   );
 }
 
-export default homePage;
+export default Header;
