@@ -15,6 +15,7 @@ query GetBirdPosts {
         _id
         description
         birdId
+        birdAuthor
     }
 }`
 
@@ -24,6 +25,7 @@ query getSingleBird($birdId: ID!){
         _id
         description
         birdId
+        birdAuthor
         comments {
             _id
             text
