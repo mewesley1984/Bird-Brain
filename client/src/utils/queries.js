@@ -9,6 +9,15 @@ query GetUser($userId: ID!) {
     }
 }`
 
+export const GET_BIRD_POSTS = gql`
+query GetBirdPosts {
+    birds {
+        _id
+        description
+        birdId
+    }
+}`
+
 export const GET_SINGLE_BIRD = gql`
 query getSingleBird($birdId: ID!){
     bird(birdId: $birdId){
