@@ -1,5 +1,4 @@
 import "./App.css";
-// import Header from './components/Header/index'
 import { Outlet } from "react-router-dom";
 import {
   ApolloClient,
@@ -8,6 +7,7 @@ import {
   ApolloProvider,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import Header from './components/Header/index'
 
 const httpLink = createHttpLink({
   uri: "http://localhost:3001/graphql",
@@ -33,10 +33,8 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      {/* <div>
-        <Header />
-      </div> */}
       <div>
+        <Header />
         <Outlet />
       </div>
     </ApolloProvider>

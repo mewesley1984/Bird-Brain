@@ -1,9 +1,12 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import App from "./App.jsx";
-//import Home from "./pages/HomePage.jsx";
-//import Profile from "./pages/Profile.jsx/index.js";
-//import BirdPost from "./pages/BirdPost.jsx";
+import Home from "./pages/Home.jsx";
+import Signup from "./pages/Signup.jsx"
+import Login from "./pages/Login.jsx"
+// import SinglePost from "./pages/SinglePost.jsx"
+
 
 const router = createBrowserRouter([
   {
@@ -14,16 +17,18 @@ const router = createBrowserRouter([
       
       {
         index: true,
-        element: <Home />,
-      },
-//      {
-//        path: "/profile",
-//        element: <Profile />,
-//      },
+        element: <Home/>,
+      }, {
+        path: '/login',
+        element: <Login />
+      }, {
+        path: '/signup',
+        element: <Signup />
+      }, 
       // {
-      //   path: "/birdPost/:",
-      //   element: <BirdPost />,
-      // },
+      //   path: '/posts/:birdId',
+      //   element: <SinglePost />
+      // }
     ],
   },
 ]);
