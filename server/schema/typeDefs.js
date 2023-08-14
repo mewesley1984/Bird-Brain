@@ -10,7 +10,7 @@ type Comment {
     _id: ID!
     text: String!
     bird: Bird!
-    user: User!    // Link to user who posted the comment
+    user: User!    
     datePosted: String!
 }
 type User {
