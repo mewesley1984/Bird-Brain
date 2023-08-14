@@ -17,7 +17,11 @@ const birdSchema = new Schema({
   birdAuthor: {
     type: String, 
     required: true,
-  }
+  },
+  datePosted: {
+    type: Date,
+    default: Date.now,
+},
   comments: [
     {
       commentText: {
