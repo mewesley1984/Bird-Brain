@@ -2,11 +2,16 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App.jsx";
+<<<<<<< HEAD
+import Login from './pages/LoginForm';
+import Home from './pages/HomePage';
+=======
 import Home from "./pages/Home.jsx";
 import Signup from "./pages/Signup.jsx"
 import Login from "./pages/Login.jsx"
 // import SinglePost from "./pages/SinglePost.jsx"
 
+>>>>>>> 4ad27192f20745a2f74c847321937280f8da15c8
 
 const router = createBrowserRouter([
   {
@@ -17,6 +22,14 @@ const router = createBrowserRouter([
       
       {
         index: true,
+<<<<<<< HEAD
+        element: <Home />,
+      },      
+      {
+       path: "/login",
+       element: <Login />,
+      },
+=======
         element: <Home/>,
       }, {
         path: '/login',
@@ -25,6 +38,7 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       }, 
+>>>>>>> 4ad27192f20745a2f74c847321937280f8da15c8
       // {
       //   path: '/posts/:birdId',
       //   element: <SinglePost />

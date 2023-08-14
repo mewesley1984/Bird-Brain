@@ -1,7 +1,13 @@
+<<<<<<< HEAD
+import { Link} from 'react-router-dom';
+import Auth from '../../utils/auth';
+
+=======
 import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 
+>>>>>>> 4ad27192f20745a2f74c847321937280f8da15c8
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
@@ -14,7 +20,11 @@ const Header = () => {
           <Link className="text-light" to="/">
             <h1 className="m-0">Bird Brain</h1>
           </Link>
+<<<<<<< HEAD
+          <p className="m-0">Find Your Birds</p>
+=======
           <p className="m-0">Bird Text</p>
+>>>>>>> 4ad27192f20745a2f74c847321937280f8da15c8
         </div>
         <div>
           {Auth.loggedIn() ? (
