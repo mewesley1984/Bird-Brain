@@ -19,8 +19,8 @@ const userSchema = new Schema(
         required: true,
       },
       birdPost: [{ type: Schema.Types.ObjectId, ref: 'Bird'}],
-    },
-
+    
+  
     savedBirds: [{type: Schema.Types.ObjectId, ref: 'Bird'}],
   },
   {
