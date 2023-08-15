@@ -1,36 +1,53 @@
 import {gql} from '@apollo/client';
 
 export const GET_USER = gql`
-query GetUser($userId: ID!) {
-    user(id: $userId) {
+query user($username: String!) {
+    user(username: $username) {
         _id
         username
         email
+        birdPost {
+            _id
+            birdName
+            birdImage
+            birdAuthor
+            datePosted
+            comments {
+                commentText
+                commentAuthor
+                createdAt
+            }
+        }
     }
 }`
 
 export const GET_BIRD_POSTS = gql`
-query GetBirdPosts {
+query birds {
     birds {
         _id
-        description
-        birdId
+        birdName
         birdAuthor
+        birdImage
+        datePosted
+        comments {
+            commentText
+            commentAuthor
+            createdAt
+        } 
     }
 }`
 
 export const GET_SINGLE_BIRD = gql`
-query getSingleBird($birdId: ID!){
+query bird($birdId: ID!){
     bird(birdId: $birdId){
         _id
-        description
-        birdId
+        birdName
+        birdImage
         birdAuthor
+        datePosted
         comments {
-            _id
-            text
-            bird
-            user
-            datePosted
+            commentText
+            commentAuthor
+            createdAt
     }
 }`

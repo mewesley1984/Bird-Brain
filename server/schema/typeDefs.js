@@ -20,6 +20,7 @@ type User {
     password: String!
     seenBirds: [Bird]!
     birdCount: Int!
+    birdPost: String!
 }
 
 type Auth {
