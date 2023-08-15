@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { GET_BIRD_POSTS } from '../components/PostList'
+import { GET_BIRD_POSTS } from '../utils/queries'
 import PostList from '../components/PostList'
 import PostEntry from '../components/PostEntry';
 
