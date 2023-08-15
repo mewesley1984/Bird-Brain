@@ -7,7 +7,7 @@ import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import Signup from "./pages/Signup.jsx";
 import Login from "./pages/Login.jsx";
-// import SinglePost from "./pages/SinglePost.jsx"
+import SinglePost from "./pages/SinglePost.jsx"
 
 
 const router = createBrowserRouter([
@@ -27,11 +27,10 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
-      }, 
-      // {
-      //   path: '/posts/:birdId',
-      //   element: <SinglePost />
-      // }
+      }, {
+        path: '/posts/:birdId',
+        element: <SinglePost />
+      }
     ],
   },
 ]);
