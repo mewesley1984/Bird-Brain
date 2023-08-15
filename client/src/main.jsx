@@ -1,10 +1,12 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
-import Signup from "./pages/Signup.jsx"
-import Login from "./pages/Login.jsx"
+import Signup from "./pages/Signup.jsx";
+import Login from "./pages/Login.jsx";
 // import SinglePost from "./pages/SinglePost.jsx"
 
 
@@ -18,15 +20,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home/>,
-      }, {
-        element: <Home />,
-      },      
-      {
-       path: "/login",
-       element: <Login />,
-      },
-      {
-        element: <Home />,
       }, 
       {
         path: '/login',
@@ -44,5 +37,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <React.StrictMode>
+  <RouterProvider router={router}> 
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+    </RouterProvider> 
+  </React.StrictMode>
 );
