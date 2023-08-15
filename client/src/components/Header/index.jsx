@@ -1,4 +1,5 @@
-import { Link} from 'react-router-dom';
+import React from "react";
+import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 const Header = () => {
@@ -13,8 +14,7 @@ const Header = () => {
           <Link className="text-light" to="/">
             <h1 className="m-0">Bird Brain</h1>
           </Link>
-          <p>This is where the navbar goes.</p>
-          <p className="m-0">Find Your Birds</p>
+          <p className="m-0">Bird Text</p>
         </div>
         <div>
           {Auth.loggedIn() ? (

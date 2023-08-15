@@ -1,4 +1,6 @@
+import React from "react";
 import "./App.css";
+import { Navbar } from "./components/Header/Navbar";
 import { Outlet } from "react-router-dom";
 import {
   ApolloClient,
@@ -30,11 +32,13 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
 function App() {
   return (
     <ApolloProvider client={client}>
       <div>
         <Header />
+        <Navbar />
         <Outlet />
       </div>
     </ApolloProvider>
