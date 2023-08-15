@@ -17,23 +17,22 @@ const router = createBrowserRouter([
       
       {
         index: true,
-<<<<<<< HEAD
         element: <Home />,
       },      
       {
        path: "/login",
        element: <Login />,
       },
-=======
-        element: <Home/>,
-      }, {
+      {
+        element: <Home />,
+      }, 
+      {
         path: '/login',
         element: <Login />
       }, {
         path: '/signup',
         element: <Signup />
       }, 
->>>>>>> 4ad27192f20745a2f74c847321937280f8da15c8
       // {
       //   path: '/posts/:birdId',
       //   element: <SinglePost />
