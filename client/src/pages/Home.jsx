@@ -1,6 +1,11 @@
-import React from "react";
-import Container from 'react-bootstrap/Container';
-import { Link} from 'react-router-dom';
+// import { useQuery } from '@apollo/client';
+// import { GET_BIRD_POSTS } from '../utils/queries'
+import PostList from '../components/PostList'
+import PostEntry from '../components/PostEntry';
+
+const homePage = () => {
+  // const { loading, data } = useQuery(GET_BIRD_POSTS);
+  // const birdPosts = data?.birdPosts || [];
 
   return (
     <main>
