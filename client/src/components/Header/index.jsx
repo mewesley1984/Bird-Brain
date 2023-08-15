@@ -13,6 +13,7 @@ const Header = () => {
           <Link className="text-light" to="/">
             <h1 className="m-0">Bird Brain</h1>
           </Link>
+          <p>This is where the navbar goes.</p>
           <p className="m-0">Find Your Birds</p>
         </div>
         <div>

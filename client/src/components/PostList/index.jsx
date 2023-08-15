@@ -1,13 +1,19 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const PostList = ({ birds, title }) => {
-  if (!birds.length) {
-    return <h3>No Posts Yet</h3>;
-  }
+  // if (!birds.length) {
+  //   return <h3>No Posts Yet</h3>;
+  // }
 
   return (
     <div>
-      <h3>{title}</h3>
+      <h3>This is where a list of posts will be.</h3>
+      <ul>
+        <li>Post 1</li>
+        <li>Post 2</li>
+        <li>Post 3</li>
+      </ul>
+      {/* <h3>{title}</h3>
       {birds &&
         birds.map((bird) => (
           <div key={bird._id} className="card mb-3">
@@ -27,7 +33,7 @@ const PostList = ({ birds, title }) => {
               Join the discussion on this bird post.
             </Link>
           </div>
-        ))}
+        ))} */}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import CommentList from '../components/CommentList';
-import CommentForm from '../components/CommentForm';
+import CommentEntry from '../components/CommentEntry'
 
 import { GET_SINGLE_BIRD } from '../utils/queries';
 
@@ -47,7 +47,7 @@ const SinglePost = () => {
         <CommentList comments={birdPost.comments} />
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <CommentForm postId={birdPost._id} />
+        <CommentEntry postId={birdPost._id} />
       </div>
     </div>
   );
