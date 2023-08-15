@@ -2,11 +2,11 @@ const { Schema, model } = require('mongoose');
 
 const birdSchema = new Schema({
   
-  birdName: {
+  birdId: {
     type: String,
     required: true,
   },
-  birdId: {
+  birdName: {
     type: String,
     required: true,
   },
