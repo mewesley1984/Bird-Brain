@@ -1,117 +1,114 @@
-// import { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { useMutation } from '@apollo/client';
+import { useState, useEffect } from "react";
+import { useMutation } from "@apollo/client";
+import { searchBirdAPI } from "../../utils/API";
+import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
+import { SEARCH_BIRDS } from "../../utils/queries";
+import Auth from "../../utils/auth";
 
-// import { ADD_BIRD_POST } from '../../utils/mutations';
-// import { GET_BIRD_POSTS } from '../../utils/queries';
+const SearchBirds = () => {
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
-// import Auth from '../../utils/auth';
+  // const [savedBirdIds, setSavedBirdIds] = useState(getSavedBirdIds());
+  // const [saveBird, { loading, error, data }] = useMutation(SAVE_BIRD);
 
-const PostEntry = () => {
+  // useEffect(() => {
+  //   return() => savedBirdIds(savedBirdIds);
+  // });
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!searchInput) {
+      return false;
+    }
+
+    try {
+      const response = await searchBirdAPI(searchInput);
+
+      if (!response.ok) {
+        throw new Error("something went wrong!");
+      }
+
+      const items = await response.json();
+      console.log(items);
+      const birdData = items.entities.map((bird) => ({
+        id: bird.id,
+        name: bird.name,
+        image: bird.images?.[0] || ["No Image Found"],
+      }));
+
+      setSearchResults(birdData);
+      setSearchInput("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // const handleSaveBird = async (birdId) => {
+  //   // find the book in `searchedBooks` state by the matching id
+  //   const birdToSave = searchedBirds.find((bird) => bird.birdId === birdId);
+
+  //   // get token
+  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+  //   if (!token) {
+  //     return false;
+  //   }
+
+  //   try {
+  //     const response = await saveBird({variables: {bird: birdToSave}})
+
+  //     if (!response.data) {
+  //       throw new Error('something went wrong!');
+  //     }
+
+  //     // if book successfully saves to user's account, save book id to state
+  //     setSavedBirdIds([...savedBirdIds, birdToSave.birdId]);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
   return (
-    <div>
-      <h3>
-        This where the user can create a post entry.
-      </h3>
-      <textarea></textarea>
-      <br></br>
-      <button>Add Post</button>
-    </div>
-  )
-}
-//   const [description, setDescription] = useState('');
+    <>
+      <Container>
+        <h1>Search Birds</h1>
+        <Form onSubmit={handleFormSubmit}>
+          <Row>
+            <Col xs={12} md={8}>
+              <Form.Control
+                name="searchInput"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                type="text"
+                size="lg"
+                placeholder="Search for a bird"
+              />
+            </Col>
+            <Col xs={12} md={4}>
+              <Button type="submit" variant="success" size="lg">
+                Submit Search
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+      </Container>
 
-//   const [characterCount, setCharacterCount] = useState(0);
+      <Container>
+        <h2 className="pt-5">
+          {searchResults.length
+            ? `Viewing ${searchResults.length} results:`
+            : "Search for a bird to begin"}
+        </h2>
+        <Row>
+          {searchResults?.map((bird) => (
+            <Row>{bird.name}</Row>
+          ))}
+        </Row>
+      </Container>
+    </>
+  );
+};
 
-//   const [addBirdPost, { error }] = useMutation(ADD_BIRD_POST, {
-//     update(cache, { data: { addBirdPost } }) {
-//       try {
-//         const { posts } = cache.readQuery({ query: GET_BIRD_POSTS });
-
-//         cache.writeQuery({
-//           query: GET_BIRD_POSTS,
-//           data: { posts: [addBirdPost, ...posts] },
-//         });
-//       } catch (e) {
-//         console.error(e);
-//       }
-//     },
-//   });
-
-//   const handleFormSubmit = async (event) => {
-//     event.preventDefault();
-
-//     try {
-//       const { data } = await addBirdPost({
-//         variables: {
-//           description,
-//           birdAuthor: Auth.getProfile().data.username,
-//         },
-//       });
-
-//       setDescription('');
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
-
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
-
-//     if (name === 'description' && value.length <= 280) {
-//       setDescription(value);
-//       setCharacterCount(value.length);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h3>A place for Bird Brains to connect.</h3>
-
-//       {Auth.loggedIn() ? (
-//         <>
-//           <p
-//             className={`m-0 ${
-//               characterCount === 280 || error ? 'text-danger' : ''
-//             }`}
-//           >
-//             Character Count: {characterCount}/280
-//           </p>
-//           <form
-//             className="flex-row justify-center justify-space-between-md align-center"
-//             onSubmit={handleFormSubmit}
-//           >
-//             <div className="col-12 col-lg-9">
-//               <textarea
-//                 name="description"
-//                 placeholder="Here's a new post..."
-//                 value={description}
-//                 className="form-input w-100"
-//                 style={{ lineHeight: '1.5', resize: 'vertical' }}
-//                 onChange={handleChange}
-//               ></textarea>
-//             </div>
-
-//             <div className="col-12 col-lg-3">
-//               <button className="btn btn-primary btn-block py-3" type="submit">
-//                 Add post
-//               </button>
-//             </div>
-//             {error && (
-//               <div className="col-12 my-3 bg-danger text-white p-3">
-//                 {error.message}
-//               </div>
-//             )}
-//           </form>
-//         </>
-//       ) : (
-//         <p>
-//           You need to be logged in to share your posts. Please{' '}
-//           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-//         </p>
-//       )}
-//     </div>
-//   );
-// };
-
-export default PostEntry;
+export default SearchBirds;
