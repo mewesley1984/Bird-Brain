@@ -14,8 +14,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const SIGNUP_USER = gql`
-  mutation signupUser($username: String!, $email: String!, $password: String!) {
-    signupUser(username: $username, email: $email, password: $password) {
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
@@ -25,32 +25,55 @@ export const SIGNUP_USER = gql`
   }
 `;
 
-export const ADD_BIRD_POST = `gql
-  mutation addBirdPost($description: String!, $birdId: ID!){
-    addBirdPost(description: $description, birdId: $birdId) {
-      _id
-      description
+export const ADD_BIRD_POST = gql`
+  mutation addBird($birdName: String!, $birdId: Int!, $birdImage: String!,$birdAuthor: String!){
+    addBird(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor) {
+      birdName
       birdId
+      birdImage
+      birdAuthor
+      datePosted
+      comments {
+         commentText
+         commentAuthor
+         createdAt
+      }
     }
   }
 `;
 
 export const EDIT_BIRD_POST = gql`
-  mutation editBirdPost($birdId: ID!, $description: String!) {
-    editBirdPost(birdId: $birdId, description: $description) {
-      _id
-      description
+  mutation editBirdPost
+  ($birdName: String!, $birdId: ID!, $birdImage: String!,$birdAuthor: String!){
+    editBirdPost(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor) {
+      birdName
       birdId
+      birdImage
+      birdAuthor
+      datePosted
+      comments {
+         commentText
+         commentAuthor
+         createdAt
+      }
     }
   }
 `;
 
 export const DELETE_BIRD_POST =gql`
-  mutation deleteBirdPost($birdId: ID!) {
-    deleteBirdPost(birdId: $birdId) {
-      _id
-      description
+  mutation deleteBirdPost
+  ($birdName: String!, $birdId: ID!, $birdImage: String!,$birdAuthor: String!){
+    deleteBirdPost(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor) {
+      birdName
       birdId
+      birdImage
+      birdAuthor
+      datePosted
+      comments {
+         commentText
+         commentAuthor
+         createdAt
+      }
     }
   }
 `;
