@@ -18,13 +18,13 @@ const birdSchema = new Schema({
     type: String, 
     required: true,
   },
-  datePosted: {
+  createdAt: {
     type: Date,
     default: Date.now,
 },
   comments: [
     {
-      commentText: {
+        commentText: {
         type: String,
         required: true,
         minlength: 1,

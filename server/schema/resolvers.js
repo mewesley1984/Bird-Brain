@@ -40,8 +40,8 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addBird: async (parent, { birdId, birdName, birdImage, birdAuthor, dateposted }) => {
-      const bird = await Bird.create({ birdId, birdName, birdImage, birdAuthor, dateposted });
+    addBird: async (parent, { birdId, birdName, birdImage, birdAuthor, createdAt }) => {
+      const bird = await Bird.create({ birdId, birdName, birdImage, birdAuthor, createdAt });
     
       await User.findOneAndUpdate(
         { username: birdAuthor },
@@ -50,22 +50,28 @@ const resolvers = {
     
       return bird; // Return the created bird object
     },
-    addComment: async (_, { birdId, commentText }, context) => {
-      const token = verifyToken(context.req);
-      if (!token) {
-        throw new AuthenticationError('User not authenticated');
-      }
+    addComment: async (_, { birdId, commentText, commentAuthor }, context) => {
+      // const token = verifyToken(context.req);
+      // if (!token) {
+      //   throw new AuthenticationError('User not authenticated');
+      // }
 
-      const user = await User.findOne({ email: token.data.email });
+      // const user = await User.findOne({ email: token.data.email });
+      const bird = await Bird.findOne({birdId:birdId});
 
-      const comment = new Comment({
-        commentText: text,
-        bird: birdId,
-        user: user._id,
-        datePosted: new Date(),
-      });
+      if (!bird) {
+        throw new Error("Bird not found"); 
+            }
 
-      await comment.save();
+      const comment = {
+        commentText: commentText,
+        commentAuthor: commentAuthor,
+        createdAt: new Date(),
+      };
+
+      bird.comments.push(comment);
+
+      await bird.save();
 
       return comment;
     },

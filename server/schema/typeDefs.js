@@ -5,14 +5,14 @@ type Bird {
     birdName: String!
     birdImage: String!
     birdAuthor: String!
-    datePosted: String!
+    createdAt: String!
     comments: [Comment]
 }
 
 type Comment {
     commentText: String!
     commentAuthor: String!
-    createdAt: Int
+    createdAt: String!
 }
 type User {
     _id: ID!
