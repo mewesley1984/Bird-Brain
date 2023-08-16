@@ -118,17 +118,10 @@ const SearchBirds = () => {
                   <Card.Text>Behold! The Magnificent {bird.name}!</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
-                      disabled={savedBookIds?.some(
-                        (savedBookId) => savedBookId === book.bookId
-                      )}
                       className="btn-block btn-info"
-                      onClick={() => handleSaveBook(book.bookId)}
+                      onClick={() => handleCreatePost(bird.id)}
                     >
-                      {savedBookIds?.some(
-                        (savedBookId) => savedBookId === book.bookId
-                      )
-                        ? "This book has already been saved!"
-                        : "Save this Book!"}
+                      Create Post
                     </Button>
                   )}
                 </Card.Body>
