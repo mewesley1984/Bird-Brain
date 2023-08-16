@@ -103,11 +103,11 @@ const SearchBirds = () => {
         </h2>
         <Row>
           {searchResults?.map((bird) => (
-            <Row>
+            <Row style={{ margin: "1rem" }}>
               <Card border="dark">
                 {bird.image ? (
                   <Card.Img
-                    style={{ width: "18rem", borderRadius: "5px" }}
+                    style={{ margin: "1rem", width: "18rem", borderRadius: "5px" }}
                     src={bird.image}
                     alt={`This is a ${bird.name}`}
                     variant="top"
@@ -115,7 +115,7 @@ const SearchBirds = () => {
                 ) : null}
                 <Card.Body>
                   <Card.Title>{bird.name}</Card.Title>
-                  <Card.Text>This is a {bird.name}</Card.Text>
+                  <Card.Text>Behold! The magnificent {bird.name}!</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedBookIds?.some(
