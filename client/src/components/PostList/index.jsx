@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import React from 'react'
+// import { Link } from 'react-router-dom';
 
 const PostList = ({ birds, title }) => {
   if (!birds.length) {
@@ -11,7 +12,7 @@ const PostList = ({ birds, title }) => {
       {birds && birds.map((bird) => (
         <div key={bird._id}>
           <h4>{bird.birdName}</h4>
-          <img src={bird.birdImage}></img>
+          <img src={bird.birdImage} alt={bird.birdName}></img>
           <h5>{bird.birdAuthor} created this post on {bird.datePosted}</h5>
         </div>
       ))}
