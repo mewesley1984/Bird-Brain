@@ -16,6 +16,7 @@ const resolvers = {
     bird: async (_, { birdId }) => {
       return Bird.findById(birdId);
     },
+    birdSearch: async (_, { query }) => await Bird.find({ birdName: new RegExp(query, 'i') }, 'birdId birdName birdImage')
   },
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
