@@ -25,6 +25,7 @@ export const GET_BIRD_POSTS = gql`
 query birds {
     birds {
         _id
+        birdId
         birdName
         birdAuthor
         birdImage
