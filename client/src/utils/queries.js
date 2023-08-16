@@ -20,7 +20,7 @@ query user($username: String!) {
         }
     }
 }`
-
+//I tested this query in Apollo Sandbox and it works
 export const GET_BIRD_POSTS = gql`
 query birds {
     birds {
