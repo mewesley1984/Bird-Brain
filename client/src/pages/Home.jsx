@@ -1,7 +1,7 @@
 // import { useQuery } from '@apollo/client';
 // import { GET_BIRD_POSTS } from '../utils/queries'
 import PostList from '../components/PostList'
-import PostEntry from '../components/PostEntry';
+import SearchBirds from '../components/SearchBirds';
 
 const homePage = () => {
   // const { loading, data } = useQuery(GET_BIRD_POSTS);
@@ -11,7 +11,7 @@ const homePage = () => {
     <main>
       <div>
         <p>Home Page</p>
-        <PostEntry />
+        <SearchBirds />
         {/* <div className="col-12 col-md-8 mb-3">
           {loading ? (
             <div>Loading...</div>
