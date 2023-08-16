@@ -1,11 +1,12 @@
 const { User, Bird, Comment } = require("../models");
 const { signToken, AuthenticationError, verifyToken } = require("../utils/auth");
+
 const resolvers = {
   Query: {
     user: async (root, args, context) => {
       const token = verifyToken(context.req);
       if (!token) {
-        throw AuthenticationError;
+        throw new AuthenticationError('User not authenticated');
       }
       return User.findOne({ email: token.data.email });
     },
@@ -14,12 +15,6 @@ const resolvers = {
     },
     bird: async (_, { birdId }) => {
       return Bird.findById(birdId);
-    },
-    comments: async () => {
-      return Comment.find();
-    },
-    comment: async (_, { commentId }) => {
-      return Comment.findById(commentId);
     },
   },
   Mutation: {
@@ -31,37 +26,47 @@ const resolvers = {
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
-      
+
       if (!user) {
-        throw AuthenticationError;
+        throw new AuthenticationError('User not found');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw AuthenticationError;
+        throw new AuthenticationError('Incorrect password');
       }
 
       const token = signToken(user);
       return { token, user };
     },
-    addComment: async (_, { birdId, text }, context) => {
+    addBird: async (parent, { birdId, birdName, birdImage, birdAuthor, dateposted }) => {
+      const bird = await Bird.create({ birdId, birdName, birdImage, birdAuthor, dateposted });
+    
+      await User.findOneAndUpdate(
+        { username: birdAuthor },
+        { $addToSet: { bird: bird._id } }
+      );
+    
+      return bird; // Return the created bird object
+    },
+    addComment: async (_, { birdId, commentText }, context) => {
       const token = verifyToken(context.req);
       if (!token) {
-        throw AuthenticationError;
+        throw new AuthenticationError('User not authenticated');
       }
 
       const user = await User.findOne({ email: token.data.email });
 
       const comment = new Comment({
-        text,
+        commentText: text,
         bird: birdId,
         user: user._id,
-        datePosted: new Date()
+        datePosted: new Date(),
       });
-      
+
       await comment.save();
-      
+
       return comment;
     },
   },

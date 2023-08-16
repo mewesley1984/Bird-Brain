@@ -1,26 +1,24 @@
 const typeDefs = `
 type Bird {
     _id: ID!
-    description: String!
-    birdId: String!
-    comments: [Comment]!
+    birdId: Int!
+    birdName: String!
+    birdImage: String!
+    birdAuthor: String!
+    datePosted: String!
+    comments: [Comment]
 }
 
 type Comment {
-    _id: ID!
-    text: String!
-    bird: Bird!
-    user: User!    
-    datePosted: String!
+    commentText: String!
+    commentAuthor: String!
+    createdAt: Int
 }
 type User {
     _id: ID!
     username: String!
     email: String!
     password: String!
-    seenBirds: [Bird]!
-    birdCount: Int!
-    birdPost: String!
 }
 
 type Auth {
@@ -31,16 +29,15 @@ type Auth {
 type Query {
     user: User
     birds: [Bird]!
-    bird(birdId: ID!): Bird
+    bird(birdId: Int): Bird
     comments: [Comment]!
-    comment(commentId: ID!): Comment
 }
 
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addBird(description: String!, birdId: String!): Bird
-    addComment(birdId: ID!, text: String!, userId: ID!): Comment
+    addBird(birdId: Int!, birdName: String!, birdImage: String! birdAuthor: String!): Bird
+    addComment(birdId: ID!, commentText: String!, commentAuthor: String!): Comment
     deleteComment(commentId: ID!): String
     deleteBird(birdId: ID!): String
 }

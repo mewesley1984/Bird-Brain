@@ -26,7 +26,7 @@ export const SIGNUP_USER = gql`
 `;
 
 export const ADD_BIRD_POST = gql`
-  mutation addBird($birdName: String!, $birdId: ID!, $birdImage: String!,$birdAuthor: String!){
+  mutation addBird($birdName: String!, $birdId: Int!, $birdImage: String!,$birdAuthor: String!){
     addBird(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor) {
       birdName
       birdId
