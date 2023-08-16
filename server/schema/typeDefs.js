@@ -31,6 +31,7 @@ type Query {
     birds: [Bird]!
     bird(birdId: Int): Bird
     comments: [Comment]!
+    birdSearch(query: String!): [Bird]
 }
 
 type Mutation {

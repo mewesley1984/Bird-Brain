@@ -39,7 +39,7 @@ query birds {
 }`
 
 export const GET_SINGLE_BIRD = gql`
-query bird($birdId: ID!){
+query bird($birdId: Int!){
     bird(birdId: $birdId){
         _id
         birdName
@@ -50,5 +50,16 @@ query bird($birdId: ID!){
             commentText
             commentAuthor
             createdAt
+        }
     }
 }`
+
+export const SEARCH_BIRDS = gql`
+query BirdSearch($query: String!) {
+    birdSearch(query: $query) {
+      birdId
+      birdImage
+      birdName
+    }
+  }
+`
