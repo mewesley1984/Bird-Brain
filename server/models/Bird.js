@@ -1,9 +1,10 @@
 const { Schema, model } = require('mongoose');
+const { INTEGER } = require('sequelize');
 
 const birdSchema = new Schema({
   
   birdId: {
-    type: String,
+    type: Number,
     required: true,
   },
   birdName: {

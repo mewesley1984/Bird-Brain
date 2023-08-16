@@ -18,10 +18,6 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
-      birdPost: [{ type: Schema.Types.ObjectId, ref: 'Bird'}],
-    
-  
-    savedBirds: [{type: Schema.Types.ObjectId, ref: 'Bird'}],
   },
   {
     toJSON: {
