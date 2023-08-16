@@ -49,5 +49,6 @@ query bird($birdId: ID!){
             commentText
             commentAuthor
             createdAt
+        }
     }
 }`

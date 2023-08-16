@@ -27,7 +27,8 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
-      }, {
+      }, 
+      {
         path: '/posts/:birdId',
         element: <SinglePost />
       }
