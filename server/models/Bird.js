@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const { INTEGER } = require('sequelize');
 
 const birdSchema = new Schema({
   
