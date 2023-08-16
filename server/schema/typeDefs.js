@@ -37,7 +37,7 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addBird(birdId: Int!, birdName: String!, birdImage: String! birdAuthor: String!): Bird
-    addComment(birdId: ID!, text: String!, userId: ID!): Comment
+    addComment(birdId: ID!, commentText: String!, commentAuthor: String!): Comment
     deleteComment(commentId: ID!): String
     deleteBird(birdId: ID!): String
 }
