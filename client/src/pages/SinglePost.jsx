@@ -19,8 +19,8 @@ console.log('fetched data for single post:', data)
 
   if (loading) {
     return <div>Loading...</div>;
-
   }
+  
   return (
     <div className="my-3">
       <h3>This is a single post.</h3>
