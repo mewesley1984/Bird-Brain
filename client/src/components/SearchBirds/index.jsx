@@ -115,7 +115,7 @@ const SearchBirds = () => {
                 ) : null}
                 <Card.Body>
                   <Card.Title>{bird.name}</Card.Title>
-                  <Card.Text>Behold! The magnificent {bird.name}!</Card.Text>
+                  <Card.Text>Behold! The Magnificent {bird.name}!</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedBookIds?.some(
