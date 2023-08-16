@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PostList = ({ birds, title }) => {
   if (!birds.length) {
@@ -11,9 +11,9 @@ const PostList = ({ birds, title }) => {
       <h3>{title}</h3>
       {birds && birds.map((bird) => (
         <div key={bird._id}>
-          <h4>{bird.birdName}</h4>
-          <img src={bird.birdImage} alt={bird.birdName}></img>
-          <h5>{bird.birdAuthor} created this post on {bird.datePosted}</h5>
+          <Link to={`/birds/${bird._id}`}>
+            <h4>{bird.birdName} - {bird.birdAuthor} create this post on {bird.datePosted}</h4>
+          </Link>
         </div>
       ))}
     </div>
