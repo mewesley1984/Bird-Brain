@@ -74,7 +74,7 @@ const SearchBirds = () => {
 
   return (
     <>
-      <Container>
+      <Container className="marmelad d-flex flex-column justify-content-center align-items-center">
         <h1>Search Birds</h1>
         <Form onSubmit={handleFormSubmit}>
           <Row>
@@ -89,8 +89,8 @@ const SearchBirds = () => {
               />
             </Col>
             <Col xs={12} md={4}>
-              <Button type="submit" variant="success" size="lg">
-                Submit Search
+              <Button type="submit" variant="success" size="lg" style={{ backgroundColor: '#333000'}}>
+                Submit&nbsp;Search
               </Button>
             </Col>
           </Row>
@@ -105,7 +105,7 @@ const SearchBirds = () => {
         </h2>
         <Row>
           {searchResults?.map((bird) => (
-            <Row style={{ margin: "1rem" }}>
+            <Col style={{ margin: "1rem" }}>
               <Card border="dark">
                 {bird.image ? (
                   <Card.Img
@@ -136,13 +136,13 @@ const SearchBirds = () => {
                     </Link>
                   )}
                   {!Auth.loggedIn() && (
-                    <Link className="btn btn-lg btn-info m-2" to="/login">
+                    <Link className="btn btn-lg btn-info m-2" to="/login" style={{ backgroundColor: '#333000', color: 'wheat' }}>
                       Login to post about this bird.
                     </Link>
                   )}
                 </Card.Body>
               </Card>
-            </Row>
+            </Col>
           ))}
         </Row>
       </Container>
