@@ -5,7 +5,7 @@ type Bird {
     birdName: String!
     birdImage: String!
     birdAuthor: String!
-    createdAt: String!
+    datePosted: String!
     comments: [Comment]
     postText: String
 }
