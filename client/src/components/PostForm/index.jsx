@@ -1,15 +1,57 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import { useMutation } from "@apollo/client";
+import { SAVE_BIRD_POST } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 
 const PostForm = () => {
   const location = useLocation();
+  const [postText, setPostText] = useState();
+  const [newPost, setNewPost] = useState();
+  const [saveBird, { loading, error, data }] = useMutation(SAVE_BIRD_POST);
+
+  useEffect(() => {
+    setNewPost({
+      birdId: location.state?.selectedBird?.id,
+      birdName: location.state?.selectedBird?.name,
+      birdImage: location.state?.selectedBird?.image,
+      birdAuthor: Auth.getProfile().data.username,
+      datePosted: new Date().toLocaleString(),
+      postText: null,
+    });
+  }, [Auth.getProfile().data.username, location.state?.selectedBird]);
+
+  // import useMutation
+  // form state variables (useState)
+  // handler function
   const selectedBird = location.state?.selectedBird;
+
+  const handleSubmit = async (event) => {
+    const toSave = { ...newPost, postText };
+    event.preventDefault();
+    event.stopPropagation();
+
+    try {
+      const response = await saveBird({ variables: { ...toSave } });
+
+      if (!response.data) {
+        throw new Error("something went wrong!");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  if (data) {
+    return `Saved post: ${data.saveBirdPost.postText} ${data.saveBirdPost.datePosted}` 
+  }
 
   return (
     <Card border="dark">
-      <Card.Title>{selectedBird.name}</Card.Title>
-      {selectedBird.image ? (
+      <Card.Title>{selectedBird?.name}</Card.Title>
+      {selectedBird?.image ? (
         <Card.Img
           style={{
             margin: "1rem",
@@ -21,13 +63,23 @@ const PostForm = () => {
           variant="top"
         />
       ) : null}
-      <Form>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Create a Bird Post:</Form.Label>
-          <Form.Control as="textarea" rows={3} />
-        </Form.Group>
-        <Button variant="primary">Add Post</Button>
-      </Form>
+      {loading && "Saving..."}
+      {!loading && (
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Create a Bird Post:</Form.Label>
+            <Form.Control
+              required
+              as="textarea"
+              rows={3}
+              onChange={(e) => setPostText(e.target.value)}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Add Post
+          </Button>
+        </Form>
+      )}
     </Card>
   );
 };

@@ -11,7 +11,7 @@ const PostList = () => {
       {loading && "Loading posts..."}
       {error && "Error fetching posts :-("}
       {data?.birds?.map((post, i) => (
-        i < 6 && <Card border="dark">
+        i < 6 && <Card border="dark" key={i}>
                 {post.birdImage ? (
                   <Card.Img
                     style={{

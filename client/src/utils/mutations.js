@@ -46,13 +46,14 @@ export const ADD_BIRD_POST = gql`
 
 export const EDIT_BIRD_POST = gql`
   mutation editBirdPost
-  ($birdName: String!, $birdId: ID!, $birdImage: String!,$birdAuthor: String!){
-    editBirdPost(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor) {
+  ($birdName: String!, $birdId: Int!, $birdImage: String!,$birdAuthor: String!, $postText: String!, $datePosted: String!){
+    editBirdPost(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor, postText: $postText, datePosted: $datePosted) {
       birdName
       birdId
       birdImage
       birdAuthor
-      createdAt
+      postText
+      datePosted
       comments {
          commentText
          commentAuthor
@@ -64,12 +65,32 @@ export const EDIT_BIRD_POST = gql`
 
 export const DELETE_BIRD_POST =gql`
   mutation deleteBirdPost
-  ($birdName: String!, $birdId: ID!, $birdImage: String!,$birdAuthor: String!){
-    deleteBirdPost(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor) {
+  ($birdName: String!, $birdId: Int!, $birdImage: String!,$birdAuthor: String!, $postText: String!, $datePosted: String!){
+    deleteBirdPost(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor, postText: $postText, datePosted: $datePosted) {
       birdName
       birdId
       birdImage
       birdAuthor
+      postText
+      datePosted
+      comments {
+         commentText
+         commentAuthor
+         createdAt
+      }
+    }
+  }
+`;
+
+export const SAVE_BIRD_POST =gql`
+  mutation saveBirdPost
+  ($birdName: String!, $birdId: Int!, $birdImage: String!,$birdAuthor: String!, $postText: String!, $datePosted: String!){
+    saveBirdPost(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor, postText: $postText, datePosted: $datePosted) {
+      birdName
+      birdId
+      birdImage
+      birdAuthor
+      postText
       datePosted
       comments {
          commentText
@@ -81,7 +102,7 @@ export const DELETE_BIRD_POST =gql`
 `;
 //Tested this mutation in Apollo Sandbox and it works!
 export const ADD_COMMENT = gql`
-mutation addComment($birdId: ID!, $commentText: String! $commentAuthor: String!) {
+mutation addComment($birdId: Int!, $commentText: String! $commentAuthor: String!) {
   addComment(birdId: $birdId, commentText: $commentText, commentAuthor: $commentAuthor ) {
       commentText
       commentAuthor
@@ -91,7 +112,7 @@ mutation addComment($birdId: ID!, $commentText: String! $commentAuthor: String!)
 `;
 
 export const EDIT_COMMENT = gql`
-  mutation editComment($birdId: ID!, $commentText: String! $commentAuthor: String!) {
+  mutation editComment($birdId: Int!, $commentText: String! $commentAuthor: String!) {
     editComment(birdId: $birdId, commentText: $commentText, commentAuthor: $commentAuthor ) {
       commentText
       commentAuthor
