@@ -28,8 +28,9 @@ query birds {
         birdId
         birdName
         birdImage
+        datePosted
+        postText
         birdAuthor
-        createdAt
         comments {
             commentText
             commentAuthor

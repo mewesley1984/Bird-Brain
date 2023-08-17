@@ -3,42 +3,49 @@
     "birdName": "Canada Jay",
     "birdId": "395",
     "birdImage": "https://images.unsplash.com/photo-1645228994686-bffb295d79e4",
-    "birdAuthor": "bswiley"
+    "birdAuthor": "bswiley",
+    "postText": "This bird was cool when I saw it"
   },
   {
     "birdName": "Green Jay",
     "birdId": "396",
     "birdImage": "https://images.unsplash.com/photo-1653014948788-f0a733aebcc1",
-    "birdAuthor": "bswiley"
+    "birdAuthor": "bswiley",
+    "postText": "This bird was cool when I saw it"
   },
   {
     "birdName": "Steller's Jay",
     "birdId": "399",
     "birdImage": "https://storage.cloud.google.com/nuthatch-images/stellarsJay.jpg",
-    "birdAuthor": "bswiley"
+    "birdAuthor": "bswiley",
+    "postText": "This bird was cool when I saw it"
   },
   {
     "birdName": "Blue Jay",
     "birdId": "398",
     "birdImage": "https://images.unsplash.com/photo-1576121267872-1c0c5c24e7f0",
-    "birdAuthor": "bswiley"
+    "birdAuthor": "bswiley",
+    "postText": "This bird was cool when I saw it"
   },
   {
     "birdName": "California Scrub-Jay",
     "birdId": "401",
     "birdImage": "https://images.unsplash.com/photo-1653281629056-bbc365135e22",
-    "birdAuthor": "bswiley"
+    "birdAuthor": "bswiley",
+    "postText": "This bird was cool when I saw it"
   },
   {
     "birdName": "Mexican Jay",
     "birdId": "403",
     "birdImage": "https://images.unsplash.com/photo-1584406859703-39ee2e72d865",
-    "birdAuthor": "bswiley"
+    "birdAuthor": "bswiley",
+    "postText": "This bird was cool when I saw it"
   },
   {
     "birdName": "Northern Cardinal",
     "birdId": "625",
     "birdImage": "https://images.unsplash.com/photo-1480775292373-5175d0634811",
-    "birdAuthor": "bswiley"
+    "birdAuthor": "bswiley",
+    "postText": "This bird was cool when I saw it"
   }
   ]

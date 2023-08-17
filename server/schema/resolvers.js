@@ -19,13 +19,13 @@ const resolvers = {
     birdSearch: async (_, { query }) => await Bird.find({ birdName: new RegExp(query, 'i') }, 'birdId birdName birdImage')
   },
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
+    addUser: async (_, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
 
       return { token, user };
     },
-    login: async (parent, { email, password }) => {
+    login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -41,8 +41,8 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addBird: async (parent, { birdId, birdName, birdImage, birdAuthor, createdAt }) => {
-      const bird = await Bird.create({ birdId, birdName, birdImage, birdAuthor, createdAt });
+    addBird: async (parent, { birdId, birdName, birdImage, birdAuthor, datePosted, postText }) => {
+      const bird = await Bird.create({ birdId, birdName, birdImage, birdAuthor, datePosted, postText });
       // The following code is to verify that the user is logged in uncomment and test before deploying
       //  const token = verifyToken(context.req);
       // if (!token) {
