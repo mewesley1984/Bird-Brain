@@ -4,24 +4,28 @@ import { GET_BIRD_POSTS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
-import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
 import Auth from "../../utils/auth";
-import CommentEntry from "../CommentEntry";
 
 const PostList = () => {
-  const { loading, data } = useQuery(GET_BIRD_POSTS);
+  const { loading, data, refetch } = useQuery(GET_BIRD_POSTS);
 
   const [commentText, setCommentText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addComment, { error }] = useMutation(ADD_COMMENT);
-  const handleFormSubmit = async (event) => {
+  const [addComment, { error, loading: mutationLoading, data: mutationData }] =
+    useMutation(ADD_COMMENT);
+
+  useEffect(() => {
+    refetch();
+  }, [mutationData]);
+
+  const handleSubmit = async (_id, event) => {
     event.preventDefault();
     try {
       const { data } = await addComment({
         variables: {
-          birdId,
+          _id,
           commentText,
           commentAuthor: Auth.getProfile().data.username,
         },
@@ -32,9 +36,9 @@ const PostList = () => {
       console.error(err);
     }
   };
-  const handleChange = (event) => {
+  const handleChange = (postId, event) => {
     const { name, value } = event.target;
-
+    // TODO: use post ID somehow
     if (name === "commentText" && value.length <= 280) {
       setCommentText(value);
       setCharacterCount(value.length);
@@ -49,7 +53,7 @@ const PostList = () => {
       {data?.birds?.map(
         (post, i) =>
           i < 6 && (
-            <Card border="dark" class='postResults' key={i}>
+            <Card border="dark" key={post._id}>
               {post.birdImage ? (
                 <Card.Img
                   style={{
@@ -63,13 +67,37 @@ const PostList = () => {
                 />
               ) : null}
               <Card.Body>
-                <Card.Title>{post.birdName}</Card.Title>
-                <Card.Text>
-                  Author: {post.birdAuthor} <br />
-                  Date: {post.datePosted} <br />
-                  Text: {post.postText}
-                </Card.Text>
-                <CommentEntry birdId={post._id} />
+                <Form onSubmit={(e) => handleSubmit(post._id, e)}>
+                  <Card.Title>{post.birdName}</Card.Title>
+                  <Card.Text>
+                    Author: {post.birdAuthor} <br />
+                    Date: {post.datePosted} <br />
+                    Text: {post.postText} <br />
+                    <h4>Comments:</h4>
+                    {post.comments.map((comment) => (
+                      <div>
+                        {comment.createdAt}: {comment.commentAuthor} said:{" "}
+                        {comment.commentText}
+                      </div>
+                    ))}
+                  </Card.Text>
+
+                  {!mutationData && (
+                    <>
+                      <Form.Control
+                        name="commentText"
+                        value={commentText}
+                        onChange={(e) => handleChange(post._id, e)}
+                        id={post._id}
+                        as="textarea"
+                        rows={3}
+                      />
+                      <Button variant="primary" type="submit">
+                        Add Comment
+                      </Button>
+                    </>
+                  )}
+                </Form>
               </Card.Body>
             </Card>
           )

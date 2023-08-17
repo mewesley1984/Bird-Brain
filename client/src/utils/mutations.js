@@ -102,8 +102,8 @@ export const SAVE_BIRD_POST =gql`
 `;
 //Tested this mutation in Apollo Sandbox and it works!
 export const ADD_COMMENT = gql`
-mutation addComment($birdId: Int!, $commentText: String! $commentAuthor: String!) {
-  addComment(birdId: $birdId, commentText: $commentText, commentAuthor: $commentAuthor ) {
+mutation addComment($_id: ID!, $commentText: String! $commentAuthor: String!) {
+  addComment(_id: $_id, commentText: $commentText, commentAuthor: $commentAuthor ) {
       commentText
       commentAuthor
       createdAt
