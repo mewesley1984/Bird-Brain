@@ -14,18 +14,18 @@ const resolvers = {
       return Bird.find();
     },
     bird: async (_, { birdId }) => {
-      return Bird.findById(birdId);
+      return Bird.findOne({birdId:birdId});
     },
     birdSearch: async (_, { query }) => await Bird.find({ birdName: new RegExp(query, 'i') }, 'birdId birdName birdImage')
   },
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
+    addUser: async (_, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
 
       return { token, user };
     },
-    login: async (parent, { email, password }) => {
+    login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -41,9 +41,14 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addBird: async (parent, { birdId, birdName, birdImage, birdAuthor, dateposted }) => {
-      const bird = await Bird.create({ birdId, birdName, birdImage, birdAuthor, dateposted });
-    
+    addBird: async (parent, { birdId, birdName, birdImage, birdAuthor, datePosted, postText }) => {
+      const bird = await Bird.create({ birdId, birdName, birdImage, birdAuthor, datePosted, postText });
+      // The following code is to verify that the user is logged in uncomment and test before deploying
+      //  const token = verifyToken(context.req);
+      // if (!token) {
+      //   throw new AuthenticationError('User not authenticated');
+      // }
+      // const user = await User.findOne({ email: token.data.email });
       await User.findOneAndUpdate(
         { username: birdAuthor },
         { $addToSet: { bird: bird._id } }
@@ -51,22 +56,29 @@ const resolvers = {
     
       return bird; // Return the created bird object
     },
-    addComment: async (_, { birdId, commentText }, context) => {
-      const token = verifyToken(context.req);
-      if (!token) {
-        throw new AuthenticationError('User not authenticated');
-      }
+    addComment: async (_, { birdId, commentText, commentAuthor }, context) => {
+      // The following code is to verify that the user is logged in uncomment and test before deploying
+      //  const token = verifyToken(context.req);
+      // if (!token) {
+      //   throw new AuthenticationError('User not authenticated');
+      // }
+      // const user = await User.findOne({ email: token.data.email });
+      
+      const bird = await Bird.findOne({birdId:birdId});
 
-      const user = await User.findOne({ email: token.data.email });
+      if (!bird) {
+        throw new Error("Bird not found"); 
+            }
 
-      const comment = new Comment({
-        commentText: text,
-        bird: birdId,
-        user: user._id,
-        datePosted: new Date(),
-      });
+      const comment = {
+        commentText: commentText,
+        commentAuthor: commentAuthor,
+        createdAt: new Date(),
+      };
 
-      await comment.save();
+      bird.comments.push(comment);
+
+      await bird.save();
 
       return comment;
     },

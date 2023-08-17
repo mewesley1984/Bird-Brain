@@ -20,6 +20,10 @@ const birdSchema = new Schema({
     type: String, 
     required: true,
   },
+  postText: {
+    type: String,
+    required: true,
+  },
   datePosted: {
     type: Date,
     default: Date.now,
@@ -27,7 +31,7 @@ const birdSchema = new Schema({
 },
   comments: [
     {
-      commentText: {
+        commentText: {
         type: String,
         required: true,
         minlength: 1,

@@ -7,12 +7,13 @@ type Bird {
     birdAuthor: String!
     datePosted: String!
     comments: [Comment]
+    postText: String
 }
 
 type Comment {
     commentText: String!
     commentAuthor: String!
-    createdAt: Int
+    createdAt: String!
 }
 type User {
     _id: ID!
@@ -37,7 +38,7 @@ type Query {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addBird(birdId: Int!, birdName: String!, birdImage: String! birdAuthor: String!): Bird
+    addBird(birdId: Int!, birdName: String!, birdImage: String!, birdAuthor: String!, postText: String!, datePosted: String!): Bird
     addComment(birdId: ID!, commentText: String!, commentAuthor: String!): Comment
     deleteComment(commentId: ID!): String
     deleteBird(birdId: ID!): String

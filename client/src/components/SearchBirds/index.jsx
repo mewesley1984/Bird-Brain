@@ -4,6 +4,7 @@ import { searchBirdAPI } from "../../utils/API";
 import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 import { SEARCH_BIRDS } from "../../utils/queries";
 import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
 
 const SearchBirds = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -13,6 +14,7 @@ const SearchBirds = () => {
   // const [saveBird, { loading, error, data }] = useMutation(SAVE_BIRD);
 
   // useEffect(() => {
+
   //   return() => savedBirdIds(savedBirdIds);
   // });
 
@@ -107,7 +109,11 @@ const SearchBirds = () => {
               <Card border="dark">
                 {bird.image ? (
                   <Card.Img
-                    style={{ margin: "1rem", width: "18rem", borderRadius: "5px" }}
+                    style={{
+                      margin: "1rem",
+                      width: "18rem",
+                      borderRadius: "5px",
+                    }}
                     src={bird.image}
                     alt={`This is a ${bird.name}`}
                     variant="top"
@@ -117,12 +123,22 @@ const SearchBirds = () => {
                   <Card.Title>{bird.name}</Card.Title>
                   <Card.Text>Behold! The Magnificent {bird.name}!</Card.Text>
                   {Auth.loggedIn() && (
-                    <Button
-                      className="btn-block btn-info"
-                      onClick={() => handleCreatePost(bird.id)}
+                    <Link
+                      className="btn btn-lg btn-info m-2"
+                      state={{ selectedBird: bird }}
+                      to={{
+                        pathname: "/create-post",
+                      }}
                     >
-                      Create Post
-                    </Button>
+                      <Button className="btn-block btn-info">
+                        Create Post
+                      </Button>
+                    </Link>
+                  )}
+                  {!Auth.loggedIn() && (
+                    <Link className="btn btn-lg btn-info m-2" to="/login">
+                      Login to post about this bird.
+                    </Link>
                   )}
                 </Card.Body>
               </Card>
