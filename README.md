@@ -3,8 +3,6 @@
 
 ## Description
 
-(Unfortunately, this repository is still a work in progress.  We are still in the process of creation.  Come back soon to give it a try!)
-
 Bird-Brain is a social media app where users can comment about birds and start a conversations with other people who love birds.  The complete application is in the folder containing this README and can be downloaded and installed locally (assuming the user has node.js and Mongo DB installed on their local machine) but we recommend using the copy already deployed to [Heroku.](https://dashboard.heroku.com/apps/desolate-basin-48031)  It was built around a full MERN (mongoDB, Express, React, Node) stack with Apollo and GraphQL connecting the front end to the back end. 
 
 
