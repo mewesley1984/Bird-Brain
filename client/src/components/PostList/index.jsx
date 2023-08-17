@@ -28,6 +28,7 @@ const PostList = () => {
           _id,
           commentText,
           commentAuthor: Auth.getProfile().data.username,
+          createdAt: new Date().toLocaleString(),
         },
       });
 
@@ -53,7 +54,7 @@ const PostList = () => {
       {data?.birds?.map(
         (post, i) =>
           i < 6 && (
-            <Card border="dark" style={{margin: "2rem 1rem"}} key={post._id}>
+            <Card style={{margin: "2rem 1rem"}} key={post._id}>
               {post.birdImage ? (
                 <Card.Img
                   style={{
@@ -74,8 +75,8 @@ const PostList = () => {
                     Date: {post.datePosted} <br />
                     Text: {post.postText} <br />
                     <h4>Comments:</h4>
-                    {post.comments.map((comment) => (
-                      <div>
+                    {post.comments.map((comment, i) => (
+                      <div key={i}>
                         {comment.createdAt}: {comment.commentAuthor} said:{" "}
                         {comment.commentText}
                       </div>
@@ -92,7 +93,7 @@ const PostList = () => {
                         as="textarea"
                         rows={3}
                       />
-                      <Button variant="primary" type="submit">
+                      <Button variant="primary" type="submit"  className="my-3"style={{ backgroundColor: '#333000', color: 'wheat' }}>
                         Add Comment
                       </Button>
                     </>

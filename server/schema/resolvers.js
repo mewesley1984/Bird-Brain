@@ -64,7 +64,7 @@ const resolvers = {
     
       return bird; // Return the created bird object
     },
-    addComment: async (_, { _id, commentText, commentAuthor }, context) => {
+    addComment: async (_, { _id, commentText, commentAuthor, createdAt}, context) => {
       // The following code is to verify that the user is logged in uncomment and test before deploying
       //  const token = verifyToken(context.req);
       // if (!token) {
@@ -81,7 +81,7 @@ const resolvers = {
       const comment = {
         commentText: commentText,
         commentAuthor: commentAuthor,
-        createdAt: new Date(),
+        createdAt: createdAt,
       };
 
       post.comments.push(comment);

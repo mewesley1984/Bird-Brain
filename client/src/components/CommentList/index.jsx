@@ -6,12 +6,12 @@ const CommentList = ({ comments = [] }) => {
   return (
     <>
       <h3
-        className="p-5 display-inline-block"
+        className="p-5 display-inline-block marmelad"
         style={{ borderBottom: '1px dotted #1a1a1a' }}
       >
         Comments
       </h3>
-      <div className="flex-row my-4">
+      <div className="flex-row my-4 marmelad">
         {comments &&
           comments.map((comment) => (
             <div key={comment._id} className="col-12 mb-3 pb-3">

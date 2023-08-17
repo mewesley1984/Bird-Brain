@@ -40,7 +40,7 @@ type Mutation {
     saveBirdPost(birdId: Int!, birdName: String!, birdImage: String!, birdAuthor: String!, postText: String!, datePosted: String!): Bird
     login(email: String!, password: String!): Auth
     addBird(birdId: Int!, birdName: String!, birdImage: String!, birdAuthor: String!, postText: String!, datePosted: String!): Bird
-    addComment(_id: ID!, commentText: String!, commentAuthor: String!): Comment
+    addComment(_id: ID!, commentText: String!, commentAuthor: String!, createdAt: String!): Comment
     deleteComment(commentId: ID!): String
     deleteBird(birdId: ID!): String
 }

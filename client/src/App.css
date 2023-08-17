@@ -1,3 +1,8 @@
+body {
+    background-color: wheat !important;
+    color: #333300 !important
+
+}
 .inknut {
     font-family: 'Inknut Antiqua', serif;
 }
@@ -5,6 +10,10 @@
 .heading-text {
     color: wheat;
 
+}
+
+h1 h2 h3 h4 {
+    font-family: 'Inknut Antiqua', serif;
 }
 
 .subtitle {
@@ -19,6 +28,18 @@
     text-decoration:underline;
 }
 
+.marmelad {
+    font-family: 'Marmelad'
+}
+
+.card {
+    position: relative;
+    padding: 10px;
+    background-color: white;
+    z-index: 0; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 #header-primary {
     background-color: #333300;
 }
@@ -27,3 +48,20 @@
     background-color: wheat;
 }
 
+.hover-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+.green-class {
+    color:#333300;
+}
+
+.btn-green {
+    background-color: #333300;
+    color: wheat;
+}
