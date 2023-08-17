@@ -1,1 +1,20 @@
-/* css styling for the pages */
+.heading-text {
+    color: wheat;
+
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration:underline;
+}
+
+#header-primary {
+    background-color: #333300;
+}
+
+#login-btn {
+    background-color: wheat;
+}
