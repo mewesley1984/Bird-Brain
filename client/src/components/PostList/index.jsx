@@ -28,6 +28,7 @@ const PostList = () => {
           _id,
           commentText,
           commentAuthor: Auth.getProfile().data.username,
+          createdAt: new Date().toLocaleString(),
         },
       });
 
