@@ -1,20 +1,39 @@
 import React from 'react'
-// import { Link } from 'react-router-dom';
+import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
+import { GET_BIRD_POSTS } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
-const PostList = ({ birds, title }) => {
-  if (!birds.length) {
-    return <h3>No Posts Yet</h3>;
-  }
-
+const PostList = () => {
+  const { loading, error, data } = useQuery(GET_BIRD_POSTS);
   return (
     <div>
-      <h3>{title}</h3>
-      {birds && birds.map((bird) => (
-        <div key={bird._id}>
-          <h4>{bird.birdName}</h4>
-          <img src={bird.birdImage} alt={bird.birdName}></img>
-          <h5>{bird.birdAuthor} created this post on {bird.datePosted}</h5>
-        </div>
+      <h3>Posts</h3>
+      {loading && "Loading posts..."}
+      {error && "Error fetching posts :-("}
+      {data?.birds?.map((post, i) => (
+        i < 6 && <Card border="dark">
+                {post.birdImage ? (
+                  <Card.Img
+                    style={{
+                      margin: "1rem",
+                      width: "5rem",
+                      borderRadius: "5px",
+                    }}
+                    src={post.birdImage}
+                    alt={`This is a ${post.birdName}`}
+                    variant="top"
+                  />
+                ) : null}
+                <Card.Body>
+                  <Card.Title>{post.birdName}</Card.Title>
+                  <Card.Text>
+                    Author: {post.birdAuthor} <br />
+                    Date: {post.datePosted} <br />
+                    Text: {post.postText}
+                    </Card.Text>
+                  
+                </Card.Body>
+              </Card>
       ))}
     </div>
   );

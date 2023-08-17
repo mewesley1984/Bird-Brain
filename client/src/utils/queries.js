@@ -30,6 +30,7 @@ query birds {
         birdAuthor
         birdImage
         datePosted
+        postText
         comments {
             commentText
             commentAuthor
