@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const APOLLO_URL = process.env.NODE_ENV === "production"
 ? "https://desolate-basin-48031-91eac769c520.herokuapp.com/graphql"
-: "http://localhost:3001"
+: "http://localhost:3001/graphql"
 
 const httpLink = createHttpLink({
   uri: APOLLO_URL
