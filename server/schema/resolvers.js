@@ -64,7 +64,7 @@ const resolvers = {
     
       return bird; // Return the created bird object
     },
-    addComment: async (_, { birdId, commentText, commentAuthor }, context) => {
+    addComment: async (_, { _id, commentText, commentAuthor }, context) => {
       // The following code is to verify that the user is logged in uncomment and test before deploying
       //  const token = verifyToken(context.req);
       // if (!token) {
@@ -72,9 +72,9 @@ const resolvers = {
       // }
       // const user = await User.findOne({ email: token.data.email });
       
-      const bird = await Bird.findOne({birdId:birdId});
+      const post = await Bird.findOne({_id: _id});
 
-      if (!bird) {
+      if (!post) {
         throw new Error("Bird not found"); 
             }
 
@@ -84,9 +84,9 @@ const resolvers = {
         createdAt: new Date(),
       };
 
-      bird.comments.push(comment);
+      post.comments.push(comment);
 
-      await bird.save();
+      await post.save();
 
       return comment;
     },

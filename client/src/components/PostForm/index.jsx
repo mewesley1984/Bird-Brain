@@ -39,6 +39,8 @@ const PostForm = () => {
       if (!response.data) {
         throw new Error("something went wrong!");
       }
+
+       window.location.assign('/');
     } catch (err) {
       console.error(err);
     }
@@ -50,8 +52,8 @@ const PostForm = () => {
 
   return (
     <Card border="dark">
-      <Card.Title>{selectedBird?.name}</Card.Title>
-      {selectedBird?.image ? (
+      <Card.Title>{selectedBird.name}</Card.Title>
+      {selectedBird.image ? (
         <Card.Img
           style={{
             margin: "1rem",
