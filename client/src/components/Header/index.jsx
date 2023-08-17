@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import React from "react";
->>>>>>> 46957e31de42795ca9e323351ae1aff72aa24f30
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
