@@ -11,8 +11,8 @@ const homePage = () => {
     <main>
       <div>
         <p>Home Page</p>
-        <PostList />
         <SearchBirds />
+        <PostList />
         {/* <div className="col-12 col-md-8 mb-3">
           {loading ? (
             <div>Loading...</div>

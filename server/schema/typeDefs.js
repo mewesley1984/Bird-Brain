@@ -37,6 +37,7 @@ type Query {
 
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
+    saveBirdPost(birdId: Int!, birdName: String!, birdImage: String!, birdAuthor: String!, postText: String!, datePosted: String!): Bird
     login(email: String!, password: String!): Auth
     addBird(birdId: Int!, birdName: String!, birdImage: String!, birdAuthor: String!, postText: String!, datePosted: String!): Bird
     addComment(birdId: ID!, commentText: String!, commentAuthor: String!): Comment
