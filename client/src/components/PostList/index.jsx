@@ -84,36 +84,20 @@ const PostList = () => {
 
                   {!mutationData && Auth.loggedIn() && (
                     <>
-                <Card.Title>{post.birdName}</Card.Title>
-                <Card.Text>
-                  Author: {post.birdAuthor} <br />
-                  Date: {post.datePosted} <br />
-                  Text: {post.postText} <br />
-                  <h4>Comments:</h4>
-                  {post.comments.map((comment) => (
-                    <div>
-                      {comment.createdAt}: {comment.commentAuthor} said:{" "}
-                      {comment.commentText}
-                    </div>
-                  ))}
-                </Card.Text>
-                {/* {!mutationData && (
-                  <> */}
-                    <Form onSubmit={(e) => handleSubmit(post._id, e)}>
                       <Form.Control
                         name="commentText"
                         value={commentText}
                         onChange={(e) => handleChange(post._id, e)}
+                        id={post._id}
                         as="textarea"
                         rows={3}
-                        birdId={post._id}
                       />
                       <Button variant="primary" type="submit">
                         Add Comment
                       </Button>
-                    </Form>
-                  {/* </>
-                )} */}
+                    </>
+                  )}
+                </Form>
               </Card.Body>
             </Card>
           )
