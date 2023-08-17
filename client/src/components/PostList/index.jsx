@@ -31,7 +31,6 @@ const PostList = () => {
                     Date: {post.datePosted} <br />
                     Text: {post.postText}
                     </Card.Text>
-                  
                 </Card.Body>
               </Card>
       ))}
