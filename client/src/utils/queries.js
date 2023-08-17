@@ -27,8 +27,8 @@ query birds {
         _id
         birdId
         birdName
-        birdAuthor
         birdImage
+        birdAuthor
         createdAt
         comments {
             commentText
@@ -41,11 +41,11 @@ query birds {
 export const GET_SINGLE_BIRD = gql`
 query bird($birdId: Int!){
     bird(birdId: $birdId){
-        _id
+        birdId
         birdName
         birdImage
         birdAuthor
-        datePosted
+        createdAt
         comments {
             commentText
             commentAuthor

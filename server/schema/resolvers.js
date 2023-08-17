@@ -43,7 +43,12 @@ const resolvers = {
     },
     addBird: async (parent, { birdId, birdName, birdImage, birdAuthor, createdAt }) => {
       const bird = await Bird.create({ birdId, birdName, birdImage, birdAuthor, createdAt });
-    
+      // The following code is to verify that the user is logged in uncomment and test before deploying
+      //  const token = verifyToken(context.req);
+      // if (!token) {
+      //   throw new AuthenticationError('User not authenticated');
+      // }
+      // const user = await User.findOne({ email: token.data.email });
       await User.findOneAndUpdate(
         { username: birdAuthor },
         { $addToSet: { bird: bird._id } }
@@ -52,12 +57,13 @@ const resolvers = {
       return bird; // Return the created bird object
     },
     addComment: async (_, { birdId, commentText, commentAuthor }, context) => {
-      // const token = verifyToken(context.req);
+      // The following code is to verify that the user is logged in uncomment and test before deploying
+      //  const token = verifyToken(context.req);
       // if (!token) {
       //   throw new AuthenticationError('User not authenticated');
       // }
-
       // const user = await User.findOne({ email: token.data.email });
+      
       const bird = await Bird.findOne({birdId:birdId});
 
       if (!bird) {
