@@ -24,7 +24,7 @@ export const SIGNUP_USER = gql`
     }
   }
 `;
-
+//I tested this mutation in 
 export const ADD_BIRD_POST = gql`
   mutation addBird($birdName: String!, $birdId: Int!, $birdImage: String!,$birdAuthor: String!){
     addBird(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor) {
@@ -50,7 +50,7 @@ export const EDIT_BIRD_POST = gql`
       birdId
       birdImage
       birdAuthor
-      datePosted
+      createdAt
       comments {
          commentText
          commentAuthor
@@ -79,21 +79,13 @@ export const DELETE_BIRD_POST =gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($birdId: ID!, $text: String!) {
-    addComment(birdId: $birdId, text: $text) {
-      _id
-      text
-      datePosted
-      bird {
-        _id
-        description
-      }
-      user {
-        _id
-        username
-      }
-    }
+mutation addComment($birdId: ID!, $commentText: String! $commentAuthor: String!) {
+  addComment(birdId: $birdId, commentText: $commentText, commentAuthor: $commentAuthor ) {
+      commentText
+      commentAuthor
+      createdAt
   }
+}
 `;
 
 export const EDIT_COMMENT = gql`

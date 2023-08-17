@@ -1,15 +1,10 @@
-import React from 'react'
-import Form from 'react-bootstrap/Form';
+import { useLocation } from "react-router-dom";
 
-function PostForm() {
-  return (
-    <Form>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Example textarea</Form.Label>
-        <Form.Control as="textarea" rows={3} />
-      </Form.Group>
-    </Form>
-  );
-}
+const PostForm = () => {
+  const location = useLocation();
+  const selectedBird = location.state?.selectedBird;
+
+  return <div>{JSON.stringify(selectedBird)}</div>;
+};
 
 export default PostForm;
