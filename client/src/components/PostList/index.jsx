@@ -46,14 +46,14 @@ const PostList = () => {
   };
 
   return (
-    <div>
+    <div style={{padding: '5rem'}}>
       <h3>Posts</h3>
       {loading && "Loading posts..."}
       {error && "Error fetching posts :-("}
       {data?.birds?.map(
         (post, i) =>
           i < 6 && (
-            <Card border="dark" key={post._id}>
+            <Card border="dark" style={{margin: "2rem 1rem"}} key={post._id}>
               {post.birdImage ? (
                 <Card.Img
                   style={{

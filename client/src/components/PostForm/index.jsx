@@ -39,6 +39,8 @@ const PostForm = () => {
       if (!response.data) {
         throw new Error("something went wrong!");
       }
+
+       window.location.assign('/');
     } catch (err) {
       console.error(err);
     }
