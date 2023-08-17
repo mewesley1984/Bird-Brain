@@ -37,6 +37,8 @@ const SearchBirds = () => {
       const birdData = items.entities.map((bird) => ({
         id: bird.id,
         name: bird.name,
+        sciName: bird.sciName,
+        status: bird.status,
         image: bird.images?.[0] || ["No Image Found"],
       }));
 
@@ -122,6 +124,8 @@ const SearchBirds = () => {
                 <Card.Body>
                   <Card.Title>{bird.name}</Card.Title>
                   <Card.Text>Behold! The Magnificent {bird.name}!</Card.Text>
+                  <Card.Text>Latin Name: {bird.sciName}</Card.Text>
+                  {bird.status ? <Card.Text>Conservation Status: {bird.status}</Card.Text> : null}
                   {Auth.loggedIn() && (
                     <Link
                       className="btn btn-lg btn-info m-2"
