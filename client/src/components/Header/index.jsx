@@ -10,13 +10,17 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="text-light mb-4 py-3" id="header-primary">
+<header className="text-light mb-4 py-3" id="header-primary" style={{
+  fontFamily: "'Inknut Antiqua', serif"
+}}>
       <div className="container d-flex flex-column flex-lg-row justify-content-between align-items-center">
         <div className="text-center text-lg-left mb-3 mb-lg-0">
           <Link className="text-light link" to="/">
             <h1 className="m-0 heading-text">Bird Brain <FontAwesomeIcon icon={faCrow} /><FontAwesomeIcon icon={faBrain} /></h1>
           </Link>
-          <p className="m-0">Bird Text</p>
+          <p className="m-0 subtitle" style={{
+  fontFamily: "'Caveat', cursive"
+}}>Sharing is Canar-ing</p>
         </div>
         <div className="text-center text-lg-left">
           {Auth.loggedIn() ? (

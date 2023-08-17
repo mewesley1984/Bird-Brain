@@ -1,6 +1,14 @@
+.inknut {
+    font-family: 'Inknut Antiqua', serif;
+}
+
 .heading-text {
     color: wheat;
 
+}
+
+.subtitle {
+    font-size: xx-large
 }
 
 .link {
@@ -18,3 +26,4 @@
 #login-btn {
     background-color: wheat;
 }
+

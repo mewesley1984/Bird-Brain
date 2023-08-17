@@ -1,10 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
 import "./App.css";
-// import { Navbar } from "./components/Header/Navbar";
-=======
-// import "./App.css";
->>>>>>> 95a65a2670d3277153f27f499c674c53c1422fd5
 import { Outlet } from "react-router-dom";
 import {
   ApolloClient,
@@ -43,10 +38,6 @@ function App() {
     <ApolloProvider client={client}>
       <div>
         <Header />
-<<<<<<< HEAD
-
-=======
->>>>>>> 95a65a2670d3277153f27f499c674c53c1422fd5
         <Outlet />
       </div>
     </ApolloProvider>
