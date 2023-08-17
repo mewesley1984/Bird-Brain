@@ -31,7 +31,7 @@ const birdSchema = new Schema({
 },
   comments: [
     {
-      commentText: {
+        commentText: {
         type: String,
         required: true,
         minlength: 1,
