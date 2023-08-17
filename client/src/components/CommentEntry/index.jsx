@@ -25,6 +25,7 @@ const CommentEntry = ({ birdId }) => {
           birdId,
           commentText,
           commentAuthor: Auth.getProfile().data.username,
+          createdAt: new Date().toLocaleString()
         },
       });
 
