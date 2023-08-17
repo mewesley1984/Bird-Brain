@@ -52,8 +52,8 @@ const PostForm = () => {
 
   return (
     <Card border="dark">
-      <Card.Title>{selectedBird?.name}</Card.Title>
-      {selectedBird?.image ? (
+      <Card.Title>{selectedBird.name}</Card.Title>
+      {selectedBird.image ? (
         <Card.Img
           style={{
             margin: "1rem",

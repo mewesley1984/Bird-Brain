@@ -46,7 +46,7 @@ Again, Bird-Brain has also been deployed to heroku{add link here!!!!!###########
 
 ## Usage
 
-When viewing the page, the user will see birds that have already Posted to provoke a discussion and a search bar.  After typing a bird name (or partial name) in the search bar and hitting "Submit Search", the user will get a list of one or more images of birds to choose from.  Hit the "Create Post" button to add your text to the bird.  After submitting the text with the bird, this bird and your "post" will be added to the list of Posts that are there for other users to view and start talking about.
+When viewing the page, the user will see birds that have already Posted to provoke a discussion and a search bar.  After typing a bird name (or partial name) in the search bar and hitting "Submit Search", the user will get a list of one or more images of birds to choose from.  Hit the "Create Post" button to add your text to the bird.  After submitting the text with the bird, this bird and your "post" will be added to the list of Posts that are there for other users to view and start talking about.  ![Here is a screenshot of the Bird Brains!](./Image/screenshot.png)
 
 ## Tests
 

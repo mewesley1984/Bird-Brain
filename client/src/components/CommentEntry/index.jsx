@@ -14,6 +14,10 @@ const CommentEntry = ({ birdId }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    
+    console.log('birdId:', birdId);
+    console.log('commentText:', commentText);
+    console.log('commentAuthor:', Auth.getProfile().data.username);
 
     try {
       const { data } = await addComment({
