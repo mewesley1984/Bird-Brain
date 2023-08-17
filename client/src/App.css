@@ -19,6 +19,9 @@
     text-decoration:underline;
 }
 
+.marmelad {
+    font-family: 'Marmelad'
+}
 #header-primary {
     background-color: #333300;
 }
@@ -27,3 +30,11 @@
     background-color: wheat;
 }
 
+.hover-card {
+    transition: transform 0.2s, box-shadow 0.2s; /* Transition for smoothness */
+  }
+  
+  .hover-card:hover {
+    transform: translateY(-5px); /* Slightly lifts the card on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* A deeper shadow on hover for more depth */
+  }
