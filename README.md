@@ -45,17 +45,21 @@ Again, Bird-Brain has also been deployed to heroku{add link here!!!!!###########
 
 ## Usage
 
-
+After running "npm run Develoop" or clicking on this link (addd link here!!!!!!!!!!!!!!!!!!!####################!!!!!!!!!!!!!!!!!), the user will see birds that have already provoked a discussion and a search bar.  After typing a bird name (or partial name) in the search bar and hitting "Submit Search", the user  will get a list of one or more images of birds to choose from.  Hit the "Create Post" button to add your text to the bird.  After submitting the text with the bird, this bird and your "post" will be added to the list of Posts that are there for other users to view and comment upon.  
 
 ## Tests
 
+We haven't created any tests that can independently be used to test this application. 
 
 ## License
 
+We have included an MIT license with this Application which gives the user full access to use or modify the application as long as the licence documentation is included in any additional copies.
 
 ## Questions/Comments
+
+For any questions or comments about the application please contact Matt Wesley at meugenewesley@gmail.com.
 
 ## Contributing
 This is a group project completed by Matt Wesley, Chris Messa, Adorah Tho, Michael Escribano, and Brian Wiley. 
 
-If one would like to contribute to the repository as well feel free to email Matt Wesley at meugenewesley@gmail.com.  
+If one would like to contribute to the repository as well feel free to email Matt Wesley at [meugenewesley@gmail.com].  
