@@ -54,7 +54,7 @@ const PostList = () => {
       {data?.birds?.map(
         (post, i) =>
           i < 6 && (
-            <Card border="dark" style={{margin: "2rem 1rem"}} key={post._id}>
+            <Card style={{margin: "2rem 1rem"}} key={post._id}>
               {post.birdImage ? (
                 <Card.Img
                   style={{
@@ -93,7 +93,7 @@ const PostList = () => {
                         as="textarea"
                         rows={3}
                       />
-                      <Button variant="primary" type="submit">
+                      <Button variant="primary" type="submit"  className="my-3"style={{ backgroundColor: '#333000', color: 'wheat' }}>
                         Add Comment
                       </Button>
                     </>
