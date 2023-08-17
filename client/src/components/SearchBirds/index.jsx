@@ -37,6 +37,8 @@ const SearchBirds = () => {
       const birdData = items.entities.map((bird) => ({
         id: bird.id,
         name: bird.name,
+        sciName: bird.sciName,
+        status: bird.status,
         image: bird.images?.[0] || ["No Image Found"],
       }));
 
@@ -74,8 +76,8 @@ const SearchBirds = () => {
 
   return (
     <>
-      <Container className="marmelad d-flex flex-column justify-content-center align-items-center">
-        <h1>Search Birds</h1>
+      <Container className="marmelad p-4 d-flex flex-column justify-content-center align-items-center">
+        <h1 className="green-class">Search Birds</h1>
         <Form onSubmit={handleFormSubmit}>
           <Row>
             <Col xs={12} md={8}>
@@ -88,7 +90,7 @@ const SearchBirds = () => {
                 placeholder="Search for a bird"
               />
             </Col>
-            <Col xs={12} md={4}>
+            <Col xs={12} md={4} className="text-center mt-4 mt-md-0">
               <Button type="submit" variant="success" size="lg" style={{ backgroundColor: '#333000'}}>
                 Submit&nbsp;Search
               </Button>
@@ -106,7 +108,7 @@ const SearchBirds = () => {
         <Row>
           {searchResults?.map((bird) => (
             <Col style={{ margin: "1rem" }}>
-              <Card border="dark">
+              <Card className="hover-card">
                 {bird.image ? (
                   <Card.Img
                     style={{
@@ -122,15 +124,17 @@ const SearchBirds = () => {
                 <Card.Body>
                   <Card.Title>{bird.name}</Card.Title>
                   <Card.Text>Behold! The Magnificent {bird.name}!</Card.Text>
+                  <Card.Text>Latin Name: {bird.sciName}</Card.Text>
+                  {bird.status ? <Card.Text>Conservation Status: {bird.status}</Card.Text> : null}
                   {Auth.loggedIn() && (
                     <Link
-                      className="btn btn-lg btn-info m-2"
+                      // className="btn btn-lg  m-2"
                       state={{ selectedBird: bird }}
                       to={{
                         pathname: "/create-post",
                       }}
                     >
-                      <Button className="btn-block btn-info">
+                      <Button className="btn-block btn-info m-2" style={{ backgroundColor: '#333000', color: 'wheat' }}>
                         Create Post
                       </Button>
                     </Link>

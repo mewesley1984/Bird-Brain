@@ -51,7 +51,7 @@ const PostForm = () => {
   }
 
   return (
-    <Card border="dark">
+    <Card>
       <Card.Title>{selectedBird.name}</Card.Title>
       {selectedBird.image ? (
         <Card.Img
@@ -77,7 +77,7 @@ const PostForm = () => {
               onChange={(e) => setPostText(e.target.value)}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button varient="primary" type="submit" style={{ backgroundColor: '#333000', color: 'wheat' }}>
             Add Post
           </Button>
         </Form>

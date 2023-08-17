@@ -10,7 +10,7 @@ const Header = () => {
     Auth.logout();
   };
   return (
-<header className="text-light mb-4 py-3" id="header-primary" style={{
+  <header className="text-light py-3" id="header-primary" style={{
   fontFamily: "'Inknut Antiqua', serif"
 }}>
       <div className="container d-flex flex-column flex-lg-row justify-content-between align-items-center">
