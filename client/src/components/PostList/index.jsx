@@ -67,6 +67,23 @@ const PostList = () => {
                 />
               ) : null}
               <Card.Body>
+                <Form onSubmit={(e) => handleSubmit(post._id, e)}>
+                  <Card.Title>{post.birdName}</Card.Title>
+                  <Card.Text>
+                    Author: {post.birdAuthor} <br />
+                    Date: {post.datePosted} <br />
+                    Text: {post.postText} <br />
+                    <h4>Comments:</h4>
+                    {post.comments.map((comment) => (
+                      <div>
+                        {comment.createdAt}: {comment.commentAuthor} said:{" "}
+                        {comment.commentText}
+                      </div>
+                    ))}
+                  </Card.Text>
+
+                  {!mutationData && Auth.loggedIn() && (
+                    <>
                 <Card.Title>{post.birdName}</Card.Title>
                 <Card.Text>
                   Author: {post.birdAuthor} <br />
