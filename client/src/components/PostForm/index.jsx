@@ -21,9 +21,6 @@ const PostForm = () => {
           variant="top"
         />
       ) : null}
-      <Card.Body>
-        <Card.Text>Behold! The Magnificent {selectedBird.name}!</Card.Text>
-      </Card.Body>
       <Form>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label>Create a Bird Post:</Form.Label>
