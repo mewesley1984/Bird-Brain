@@ -3,7 +3,7 @@
 
 ## Description
 
-Bird-Brain is a social media app where users can comment about birds and start a conversations with other people who love birds.  The complete application is in the folder containing this README and can be downloaded and installed locally (assuming the user has node.js and Mongo DB installed on their local machine) but we recommend using the copy already deployed to [Heroku.](https://dashboard.heroku.com/apps/desolate-basin-48031)  It was built around a full MERN (mongoDB, Express, React, Node) stack with Apollo and GraphQL connecting the front end to the back end. 
+Bird-Brain is a social media app where users can comment about birds and start a conversations with other people who love birds.  The complete application is in the folder containing this README and can be downloaded and installed locally (assuming the user has node.js and Mongo DB installed on their local machine) but we recommend using the copy already deployed to [Heroku.]( https://desolate-basin-48031-91eac769c520.herokuapp.com/)  It was built around a full MERN (mongoDB, Express, React, Node) stack with Apollo and GraphQL connecting the front end to the back end. 
 
 
 
@@ -23,7 +23,7 @@ Bird-Brain is a social media app where users can comment about birds and start a
 
 ## Installation
 
-Again, Bird-Brain has also been deployed to [Heroku.](https://dashboard.heroku.com/apps/desolate-basin-48031), but if desired it can also be downloaded from this git repository and deployed locally.  The deployed version makes API calls to the [Nuthatch API](https://nuthatch.lastelm.software/), so to use it locally the user will have to request a key from from them.  With that in mind, to install it locally it is required that the user:
+Again, Bird-Brain has also been deployed to [Heroku.](https://desolate-basin-48031-91eac769c520.herokuapp.com/), but if desired it can also be downloaded from this git repository and deployed locally.  The deployed version makes API calls to the [Nuthatch API](https://nuthatch.lastelm.software/), so to use it locally the user will have to request a key from from them.  With that in mind, to install it locally it is required that the user:
 
 1. Request an API key from the [Nuthatch API](https://nuthatch.lastelm.software/).  At the time of this app's creation that was a relatively easy matter.  All that is required is that the user give an email address and a short answer to the question "How will you use this api?" Almost immediately after submitting the form an API key will be sent to your email address. 
 
