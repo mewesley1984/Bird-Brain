@@ -75,8 +75,8 @@ const PostList = () => {
                     Date: {post.datePosted} <br />
                     Text: {post.postText} <br />
                     <h4>Comments:</h4>
-                    {post.comments.map((comment) => (
-                      <div>
+                    {post.comments.map((comment, i) => (
+                      <div key={i}>
                         {comment.createdAt}: {comment.commentAuthor} said:{" "}
                         {comment.commentText}
                       </div>
