@@ -107,7 +107,11 @@ const SearchBirds = () => {
               <Card border="dark">
                 {bird.image ? (
                   <Card.Img
-                    style={{ margin: "1rem", width: "18rem", borderRadius: "5px" }}
+                    style={{
+                      margin: "1rem",
+                      width: "18rem",
+                      borderRadius: "5px",
+                    }}
                     src={bird.image}
                     alt={`This is a ${bird.name}`}
                     variant="top"
