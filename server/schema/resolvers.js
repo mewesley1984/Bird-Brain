@@ -14,7 +14,7 @@ const resolvers = {
       return Bird.find();
     },
     bird: async (_, { birdId }) => {
-      return Bird.findById(birdId);
+      return Bird.findOne({birdId:birdId});
     },
     birdSearch: async (_, { query }) => await Bird.find({ birdName: new RegExp(query, 'i') }, 'birdId birdName birdImage')
   },
