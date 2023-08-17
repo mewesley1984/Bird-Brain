@@ -1,1 +1,29 @@
-/* css styling for the pages */
+.inknut {
+    font-family: 'Inknut Antiqua', serif;
+}
+
+.heading-text {
+    color: wheat;
+
+}
+
+.subtitle {
+    font-size: xx-large
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration:underline;
+}
+
+#header-primary {
+    background-color: #333300;
+}
+
+#login-btn {
+    background-color: wheat;
+}
+
