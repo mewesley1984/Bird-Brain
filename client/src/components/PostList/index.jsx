@@ -54,7 +54,7 @@ const PostList = () => {
       {data?.birds?.map(
         (post, i) =>
           i < 6 && (
-            <Card border="dark" style={{margin: "2rem 1rem"}} key={post._id}>
+            <Card border="dark" style={{margin: "2rem 1rem"}} key={i}>
               {post.birdImage ? (
                 <Card.Img
                   style={{
