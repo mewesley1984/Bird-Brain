@@ -30,7 +30,12 @@ const PostList = () => {
                     Author: {post.birdAuthor} <br />
                     Date: {post.datePosted} <br />
                     Text: {post.postText}
-                    </Card.Text>
+                    </Card.Text>                   
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Example textarea</Form.Label>
+                        <Form.Control as="textarea" rows={3} />
+                    </Form.Group>
+                    <Button variant="primary">Add Comment</Button>{' '}
                 </Card.Body>
               </Card>
       ))}
