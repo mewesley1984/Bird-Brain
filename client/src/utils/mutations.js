@@ -24,7 +24,7 @@ export const SIGNUP_USER = gql`
     }
   }
 `;
-//I tested this mutation in 
+//Tested this mutation in Apollo Sandbox and it works!
 export const ADD_BIRD_POST = gql`
   mutation addBird($birdName: String!, $birdId: Int!, $birdImage: String!,$birdAuthor: String!){
     addBird(birdName: $birdName,birdId:$birdId,birdImage: $birdImage, birdAuthor: $birdAuthor) {
@@ -32,7 +32,7 @@ export const ADD_BIRD_POST = gql`
       birdId
       birdImage
       birdAuthor
-      datePosted
+      createdAt
       comments {
          commentText
          commentAuthor
@@ -77,7 +77,7 @@ export const DELETE_BIRD_POST =gql`
     }
   }
 `;
-
+//Tested this mutation in Apollo Sandbox and it works!
 export const ADD_COMMENT = gql`
 mutation addComment($birdId: ID!, $commentText: String! $commentAuthor: String!) {
   addComment(birdId: $birdId, commentText: $commentText, commentAuthor: $commentAuthor ) {
@@ -89,20 +89,12 @@ mutation addComment($birdId: ID!, $commentText: String! $commentAuthor: String!)
 `;
 
 export const EDIT_COMMENT = gql`
-  mutation editComment($commentId: ID!, $text: String!) {
-    editComment(commentId: $commentId, text: $text) {
-      _id
-      text
-      datePosted
-      bird {
-        _id
-        description
-      }
-      user {
-        _id
-        username
-      }
-    }
+  mutation editComment($birdId: ID!, $commentText: String! $commentAuthor: String!) {
+    editComment(birdId: $birdId, commentText: $commentText, commentAuthor: $commentAuthor ) {
+      commentText
+      commentAuthor
+      createdAt
+     }
   }
 `;
 
