@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../utils/mutations';
 import { useState } from 'react';
-
+import Auth from '../../utils/auth';
 
 const PostList = () => {
   const { loading,data } = useQuery(GET_BIRD_POSTS);
@@ -45,7 +45,7 @@ const PostList = () => {
       {loading && "Loading posts..."}
       {error && "Error fetching posts :-("}
       {data?.birds?.map((post, i) => (
-        i < 6 && <Card border="dark">
+        i < 6 && <Card key={i} border="dark">
                 {post.birdImage ? (
                   <Card.Img
                     style={{
@@ -65,9 +65,8 @@ const PostList = () => {
                     Date: {post.datePosted} <br />
                     Text: {post.postText}
                     </Card.Text>                   
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Example textarea</Form.Label>
-                        <Form.Control as="textarea" rows={3} />
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" onSubmit={handleFormSubmit}>
+                        <Form.Control name="commentText" value={commentText} onChange={handleChange}  as="textarea" rows={3} />
                     </Form.Group>
                     <Button variant="primary">Add Comment</Button>{' '}
                 </Card.Body>
