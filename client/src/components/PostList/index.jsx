@@ -55,7 +55,6 @@ const PostList = () => {
         (post, i) =>
           i < 6 && (
             <Card style={{margin: "2rem 1rem"}} key={i}>
-
               {post.birdImage ? (
                 <Card.Img
                   style={{
