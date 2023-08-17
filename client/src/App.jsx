@@ -11,11 +11,12 @@ import { setContext } from "@apollo/client/link/context";
 import Header from './components/Header/index'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const APOLLO_URL = process.env.NODE_ENV === "production"
+? "https://desolate-basin-48031-91eac769c520.herokuapp.com"
+: "http://localhost:3001"
+
 const httpLink = createHttpLink({
-  uri: process.env.NODE_ENV === "production"
-  ? "https://desolate-basin-48031-91eac769c520.herokuapp.com:" +
-    process.env.PORT
-  : "http://localhost:3001",,
+  uri: APOLLO_URL
 });
 
 const authLink = setContext((_, { headers }) => {
