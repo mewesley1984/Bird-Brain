@@ -11,7 +11,9 @@ const resolvers = {
       return User.findOne({ email: token.data.email });
     },
     birds: async () => {
-      return Bird.find();
+      return Bird.find().sort({
+        datePosted: -1 //Sort by Date posted DESC
+    });
     },
     bird: async (_, { birdId }) => {
       return Bird.findOne({birdId:birdId});
@@ -24,6 +26,12 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+
+    saveBirdPost: async (_, {birdId, birdName, birdImage, birdAuthor, postText, datePosted}) => {
+      const createdPost = await Bird.create({birdId, birdName, birdImage, birdAuthor, postText, datePosted});
+
+      return createdPost
     },
     login: async (_, { email, password }) => {
       const user = await User.findOne({ email });

@@ -101,7 +101,7 @@ const SearchBirds = () => {
         <h2 className="pt-5">
           {searchResults.length
             ? `Viewing ${searchResults.length} results:`
-            : "Search for a bird to begin"}
+            : null}
         </h2>
         <Row>
           {searchResults?.map((bird) => (
