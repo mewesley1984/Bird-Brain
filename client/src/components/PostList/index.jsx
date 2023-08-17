@@ -80,20 +80,23 @@ const PostList = () => {
                     </div>
                   ))}
                 </Card.Text>
-
-                <Form onSubmit={(e) => handleSubmit(post._id, e)}>
-                  <Form.Control
-                    name="commentText"
-                    value={commentText}
-                    onChange={(e) => handleChange(post._id, e)}
-                    as="textarea"
-                    rows={3}
-                    birdId={post._id}
-                  />
-                  <Button variant="primary" type="submit">
-                    Add Comment
-                  </Button>
-                </Form>
+                {/* {!mutationData && (
+                  <> */}
+                    <Form onSubmit={(e) => handleSubmit(post._id, e)}>
+                      <Form.Control
+                        name="commentText"
+                        value={commentText}
+                        onChange={(e) => handleChange(post._id, e)}
+                        as="textarea"
+                        rows={3}
+                        birdId={post._id}
+                      />
+                      <Button variant="primary" type="submit">
+                        Add Comment
+                      </Button>
+                    </Form>
+                  {/* </>
+                )} */}
               </Card.Body>
             </Card>
           )
