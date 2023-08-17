@@ -20,7 +20,11 @@ const birdSchema = new Schema({
     type: String, 
     required: true,
   },
-  createdAt: {
+  postText: {
+    type: String,
+    required: true,
+  },
+  datePosted: {
     type: Date,
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp)
