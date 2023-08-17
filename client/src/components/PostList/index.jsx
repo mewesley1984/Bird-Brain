@@ -4,17 +4,21 @@ import { GET_BIRD_POSTS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
-import { useState } from "react";
-import Auth from "../../utils/auth"
+import { useState, useEffect } from "react";
+import Auth from "../../utils/auth";
 
 const PostList = () => {
-  const { loading, data } = useQuery(GET_BIRD_POSTS);
+  const { loading, data, refetch } = useQuery(GET_BIRD_POSTS);
 
   const [commentText, setCommentText] = useState("");
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addComment, { error, loading: mutationLoading, data: mutationData }] =
     useMutation(ADD_COMMENT);
+
+  useEffect(() => {
+    refetch();
+  }, [mutationData]);
 
   const handleSubmit = async (_id, event) => {
     event.preventDefault();
@@ -69,18 +73,30 @@ const PostList = () => {
                     Author: {post.birdAuthor} <br />
                     Date: {post.datePosted} <br />
                     Text: {post.postText} <br />
-                    <h4>Comments:</h4> 
-                    {post.comments.map(comment=><div>{comment.createdAt}: {comment.commentAuthor} said: {comment.commentText}</div>)}
+                    <h4>Comments:</h4>
+                    {post.comments.map((comment) => (
+                      <div>
+                        {comment.createdAt}: {comment.commentAuthor} said:{" "}
+                        {comment.commentText}
+                      </div>
+                    ))}
                   </Card.Text>
-                  <Form.Control
-                    name="commentText"
-                    value={commentText}
-                    onChange={(e) => handleChange(post._id, e)}
-                    id={post._id}
-                    as="textarea"
-                    rows={3}
-                  />
-                  <Button variant="primary" type="submit">Add Comment</Button>
+
+                  {!mutationData && (
+                    <>
+                      <Form.Control
+                        name="commentText"
+                        value={commentText}
+                        onChange={(e) => handleChange(post._id, e)}
+                        id={post._id}
+                        as="textarea"
+                        rows={3}
+                      />
+                      <Button variant="primary" type="submit">
+                        Add Comment
+                      </Button>
+                    </>
+                  )}
                 </Form>
               </Card.Body>
             </Card>
