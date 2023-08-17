@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar } from '../components/Header/Navbar';
 import { useMutation } from '@apollo/client';
 import { SIGNUP_USER } from '../utils/mutations';
 
