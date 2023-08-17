@@ -6,7 +6,7 @@ const { ApolloServer } = require("@apollo/server");
 const cors = require("cors");
 const { typeDefs, resolvers } = require("./schema");
 const { expressMiddleware } = require("@apollo/server/express4");
-const { authMiddleware } = require('./utils/auth');
+const { authMiddleware } = require("./utils/auth");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
@@ -51,7 +51,14 @@ const startApolloServer = async () => {
   db.once("open", () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+      console.log(
+        `Use GraphQL at ${
+          process.env.NODE_ENV === "production"
+            ? "https://desolate-basin-48031-91eac769c520.herokuapp.com:" +
+              process.env.PORT
+            : "http://localhost:3001"
+        },`
+      );
     });
   });
 };

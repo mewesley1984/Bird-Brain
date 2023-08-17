@@ -12,7 +12,10 @@ import Header from './components/Header/index'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: process.env.NODE_ENV === "production"
+  ? "https://desolate-basin-48031-91eac769c520.herokuapp.com:" +
+    process.env.PORT
+  : "http://localhost:3001",,
 });
 
 const authLink = setContext((_, { headers }) => {
