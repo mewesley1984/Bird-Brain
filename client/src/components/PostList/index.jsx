@@ -82,7 +82,7 @@ const PostList = () => {
                     ))}
                   </Card.Text>
 
-                  {!mutationData && (
+                  {!mutationData && Auth.loggedIn() && (
                     <>
                       <Form.Control
                         name="commentText"
